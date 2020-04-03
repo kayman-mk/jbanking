@@ -2,55 +2,40 @@ package fr.marcwrobel.jbanking.calendar;
 
 import static java.time.Month.DECEMBER;
 import static java.time.Month.JANUARY;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 import java.time.MonthDay;
-import java.time.format.DateTimeParseException;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class FixedHolidayTest {
+public class RelativeHolidayTest {
 
   private static final int YEAR = 2020;
   private static final int MONTH = 6;
   private static final int DAY = 15;
+  private static final int SHIFT = 1;
 
-  private static final LocalDate HOLIDAY_2020 = LocalDate.of(YEAR, MONTH, DAY);
+  private static final LocalDate HOLIDAY_2020 = LocalDate.of(YEAR, MONTH, DAY).plusDays(SHIFT);
   private static final LocalDate HOLIDAY_2019 = HOLIDAY_2020.minusYears(1);
   private static final LocalDate HOLIDAY_2021 = HOLIDAY_2020.plusYears(1);
 
-  private static final FixedHoliday HOLIDAY = new FixedHoliday(MonthDay.of(MONTH, DAY));
+  private static final RelativeHoliday HOLIDAY =
+      new RelativeHoliday(new FixedHoliday(MonthDay.of(MONTH, DAY)), SHIFT);
 
   @Test
-  public void monthDayCannotBeNull() {
-    assertThrows(NullPointerException.class, () -> new FixedHoliday((MonthDay) null));
-  }
-
-  @Test
-  public void textCannotBeNull() {
-    assertThrows(NullPointerException.class, () -> new FixedHoliday((CharSequence) null));
-  }
-
-  @Test
-  public void textMustBeAValidMonthDay() {
-    assertThrows(DateTimeParseException.class, () -> new FixedHoliday("test"));
-  }
-
-  @Test
-  public void validTextDoesNotThrows() {
-    assertDoesNotThrow(() -> new FixedHoliday("--12-03"));
+  public void baseCannotBeNull() {
+    assertThrows(NullPointerException.class, () -> new RelativeHoliday(null, 0));
   }
 
   @ParameterizedTest
   @ValueSource(ints = {1, 100, 1970, YEAR, 2050, 10000})
   public void holidayCheckSucceed(int year) {
-    assertTrue(HOLIDAY.check(LocalDate.of(year, MONTH, DAY)));
+    assertTrue(HOLIDAY.check(LocalDate.of(year, MONTH, DAY).plusDays(SHIFT)));
   }
 
   @Test

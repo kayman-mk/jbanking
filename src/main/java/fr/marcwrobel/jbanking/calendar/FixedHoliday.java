@@ -12,7 +12,7 @@ public final class FixedHoliday implements Holiday {
   private final MonthDay monthDay;
 
   /**
-   * Create a new FixedHoliday using the given {@link MonthDay}
+   * Create a new holiday using the given {@link MonthDay}
    *
    * @param monthDay a non-null {@link MonthDay}
    * @throws NullPointerException if the given {@link MonthDay} is <code>null</code>
@@ -66,9 +66,5 @@ public final class FixedHoliday implements Holiday {
     }
 
     return Optional.of(result);
-  }
-
-  public MonthDay getMonthDay() {
-    return monthDay;
   }
 }

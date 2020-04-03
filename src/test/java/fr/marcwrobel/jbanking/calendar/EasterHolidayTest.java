@@ -21,6 +21,11 @@ class EasterHolidayTest {
   private static final int YEAR = 2020;
   private static final int MONTH = 4;
   private static final int DAY = 12;
+
+  private static final LocalDate HOLIDAY_2020 = LocalDate.of(YEAR, MONTH, DAY);
+  private static final LocalDate HOLIDAY_2019 = LocalDate.of(YEAR - 1, MONTH, 21);
+  private static final LocalDate HOLIDAY_2021 = LocalDate.of(YEAR + 1, MONTH, 4);
+
   private static final EasterHoliday HOLIDAY = new EasterHoliday();
 
   @ParameterizedTest
@@ -47,62 +52,56 @@ class EasterHolidayTest {
 
   @Test
   public void previousCalculationWithDateBefore() {
-    LocalDate date = LocalDate.of(YEAR, MONTH, DAY - 1);
-    Optional<LocalDate> previous = HOLIDAY.previous(date);
+    Optional<LocalDate> previous = HOLIDAY.previous(HOLIDAY_2020.minusDays(1));
 
     assertTrue(previous.isPresent());
     assertTrue(HOLIDAY.check(previous.get()));
-    assertEquals(LocalDate.of(YEAR - 1, MONTH, 21), previous.get());
+    assertEquals(HOLIDAY_2019, previous.get());
   }
 
   @Test
   public void previousCalculationWithDatesEquals() {
-    LocalDate date = LocalDate.of(YEAR, MONTH, DAY);
-    Optional<LocalDate> previous = HOLIDAY.previous(date);
+    Optional<LocalDate> previous = HOLIDAY.previous(HOLIDAY_2020);
 
     assertTrue(previous.isPresent());
     assertTrue(HOLIDAY.check(previous.get()));
-    assertEquals(LocalDate.of(YEAR - 1, MONTH, 21), previous.get());
+    assertEquals(HOLIDAY_2019, previous.get());
   }
 
   @Test
   public void previousCalculationWithDateAfter() {
-    LocalDate date = LocalDate.of(YEAR, MONTH, DAY + 1);
-    Optional<LocalDate> previous = HOLIDAY.previous(date);
+    Optional<LocalDate> previous = HOLIDAY.previous(HOLIDAY_2020.plusDays(1));
 
     assertTrue(previous.isPresent());
     assertTrue(HOLIDAY.check(previous.get()));
-    assertEquals(LocalDate.of(YEAR, MONTH, DAY), previous.get());
+    assertEquals(HOLIDAY_2020, previous.get());
   }
 
   @Test
   public void nextCalculationWithDateBefore() {
-    LocalDate date = LocalDate.of(YEAR, MONTH, DAY - 1);
-    Optional<LocalDate> next = HOLIDAY.next(date);
+    Optional<LocalDate> next = HOLIDAY.next(HOLIDAY_2020.minusDays(1));
 
     assertTrue(next.isPresent());
     assertTrue(HOLIDAY.check(next.get()));
-    assertEquals(LocalDate.of(YEAR, MONTH, DAY), next.get());
+    assertEquals(HOLIDAY_2020, next.get());
   }
 
   @Test
   public void nextCalculationWithDatesEquals() {
-    LocalDate date = LocalDate.of(YEAR, MONTH, DAY);
-    Optional<LocalDate> next = HOLIDAY.next(date);
+    Optional<LocalDate> next = HOLIDAY.next(HOLIDAY_2020);
 
     assertTrue(next.isPresent());
     assertTrue(HOLIDAY.check(next.get()));
-    assertEquals(LocalDate.of(YEAR + 1, MONTH, 4), next.get());
+    assertEquals(HOLIDAY_2021, next.get());
   }
 
   @Test
   public void nextCalculationWithDateAfter() {
-    LocalDate date = LocalDate.of(YEAR, MONTH, DAY + 1);
-    Optional<LocalDate> next = HOLIDAY.next(date);
+    Optional<LocalDate> next = HOLIDAY.next(HOLIDAY_2020.plusDays(1));
 
     assertTrue(next.isPresent());
     assertTrue(HOLIDAY.check(next.get()));
-    assertEquals(LocalDate.of(YEAR + 1, MONTH, 4), next.get());
+    assertEquals(HOLIDAY_2021, next.get());
   }
 
   /*
