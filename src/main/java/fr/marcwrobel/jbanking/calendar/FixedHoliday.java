@@ -37,8 +37,7 @@ public final class FixedHoliday implements Holiday {
   /** @see Holiday#check(LocalDate) */
   @Override
   public boolean check(LocalDate date) {
-    return monthDay.getMonth() == date.getMonth()
-        && monthDay.getDayOfMonth() == date.getDayOfMonth();
+    return monthDay.equals(MonthDay.from(date));
   }
 
   /** @see Holiday#previous(LocalDate) */
