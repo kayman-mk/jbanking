@@ -2,55 +2,37 @@ package fr.marcwrobel.jbanking.calendar;
 
 import static java.time.Month.DECEMBER;
 import static java.time.Month.JANUARY;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.time.LocalDate;
-import java.time.MonthDay;
-import java.time.format.DateTimeParseException;
 import java.util.Optional;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-class FixedHolidayTest {
+class EasterHolidayTest {
 
   private static final int YEAR = 2020;
-  private static final int DAY = 15;
-  private static final int MONTH = 6;
-  private static final FixedHoliday HOLIDAY = new FixedHoliday(MonthDay.of(MONTH, DAY));
-
-  @Test
-  public void monthDayCannotBeNull() {
-    assertThrows(NullPointerException.class, () -> new FixedHoliday((MonthDay) null));
-  }
-
-  @Test
-  public void textCannotBeNull() {
-    assertThrows(NullPointerException.class, () -> new FixedHoliday((CharSequence) null));
-  }
-
-  @Test
-  public void textMustBeAValidMonthDay() {
-    assertThrows(DateTimeParseException.class, () -> new FixedHoliday("test"));
-  }
-
-  @Test
-  public void validTextDoesNotThrows() {
-    assertDoesNotThrow(() -> new FixedHoliday("--12-03"));
-  }
+  private static final int MONTH = 4;
+  private static final int DAY = 12;
+  private static final EasterHoliday HOLIDAY = new EasterHoliday();
 
   @ParameterizedTest
-  @ValueSource(ints = {1, 100, 1970, YEAR, 2050, 10000})
-  public void holidayCheckSucceed(int year) {
-    assertTrue(HOLIDAY.check(HOLIDAY.getMonthDay().atYear(year)));
+  @MethodSource("easter500")
+  public void easter500(int month, int dayOfMonth, int year) {
+    LocalDate date = LocalDate.of(year, month, dayOfMonth);
+    assertTrue(HOLIDAY.check(date));
   }
 
   @Test
   public void onlyOneHolidayPerYear() {
-    LocalDate start = LocalDate.of(YEAR, JANUARY, 1);
+    LocalDate start = LocalDate.of(2020, JANUARY, 1);
     LocalDate end = LocalDate.of(start.getYear(), DECEMBER, 31);
 
     int count = 0;
@@ -70,7 +52,7 @@ class FixedHolidayTest {
 
     assertTrue(previous.isPresent());
     assertTrue(HOLIDAY.check(previous.get()));
-    assertEquals(LocalDate.of(YEAR - 1, MONTH, DAY), previous.get());
+    assertEquals(LocalDate.of(YEAR - 1, MONTH, 21), previous.get());
   }
 
   @Test
@@ -80,7 +62,7 @@ class FixedHolidayTest {
 
     assertTrue(previous.isPresent());
     assertTrue(HOLIDAY.check(previous.get()));
-    assertEquals(LocalDate.of(YEAR - 1, MONTH, DAY), previous.get());
+    assertEquals(LocalDate.of(YEAR - 1, MONTH, 21), previous.get());
   }
 
   @Test
@@ -110,7 +92,7 @@ class FixedHolidayTest {
 
     assertTrue(next.isPresent());
     assertTrue(HOLIDAY.check(next.get()));
-    assertEquals(LocalDate.of(YEAR + 1, MONTH, DAY), next.get());
+    assertEquals(LocalDate.of(YEAR + 1, MONTH, 4), next.get());
   }
 
   @Test
@@ -120,6 +102,19 @@ class FixedHolidayTest {
 
     assertTrue(next.isPresent());
     assertTrue(HOLIDAY.check(next.get()));
-    assertEquals(LocalDate.of(YEAR + 1, MONTH, DAY), next.get());
+    assertEquals(LocalDate.of(YEAR + 1, MONTH, 4), next.get());
+  }
+
+  /*
+   * Easter dates comes from https://www.census.gov/srd/www/genhol/easter500.html.
+   */
+  private static Stream<Arguments> easter500() {
+    InputStream easter500 =
+        EasterHolidayTest.class.getClassLoader().getResourceAsStream("easter500.txt");
+    return new BufferedReader(new InputStreamReader(easter500))
+        .lines()
+        .map(line -> line.trim().replaceAll("\\s+", " "))
+        .map(line -> line.split(" "))
+        .map(Arguments::of);
   }
 }

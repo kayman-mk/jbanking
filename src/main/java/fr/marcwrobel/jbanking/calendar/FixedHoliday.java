@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.MonthDay;
 import java.util.Optional;
 
-/** A {@link Holiday}s occurring every year the same day and month. */
+/** A {@link Holiday} occurring every year the same day and month. */
 public final class FixedHoliday implements Holiday {
 
   private final MonthDay monthDay;
