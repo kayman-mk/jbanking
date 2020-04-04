@@ -3,6 +3,7 @@ package fr.marcwrobel.jbanking.calendar;
 import static java.time.Month.DECEMBER;
 import static java.time.Month.JANUARY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.BufferedReader;
@@ -27,6 +28,21 @@ class EasterHolidayTest {
   private static final LocalDate HOLIDAY_2021 = LocalDate.of(YEAR + 1, MONTH, 4);
 
   private static final EasterHoliday HOLIDAY = new EasterHoliday();
+
+  @Test
+  public void checkDoesNotAcceptNull() {
+    assertThrows(NullPointerException.class, () -> HOLIDAY.check(null));
+  }
+
+  @Test
+  public void nextDoesNotAcceptNull() {
+    assertThrows(NullPointerException.class, () -> HOLIDAY.next(null));
+  }
+
+  @Test
+  public void previousDoesNotAcceptNull() {
+    assertThrows(NullPointerException.class, () -> HOLIDAY.next(null));
+  }
 
   @ParameterizedTest
   @MethodSource("easter500")

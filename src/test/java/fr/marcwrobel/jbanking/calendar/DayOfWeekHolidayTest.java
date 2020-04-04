@@ -13,8 +13,8 @@ class DayOfWeekHolidayTest {
 
   private static final int YEAR = 2020;
   private static final int MONTH = 6;
-  private static final int DAY = 15;
-  private static final DayOfWeek DAY_OF_WEEK = DayOfWeek.MONDAY;
+  private static final int DAY = 16;
+  private static final DayOfWeek DAY_OF_WEEK = DayOfWeek.TUESDAY;
 
   private static final LocalDate CURRENT_WEEK = LocalDate.of(YEAR, MONTH, DAY);
   private static final LocalDate PREVIOUS_WEEK = CURRENT_WEEK.minusWeeks(1);
@@ -25,6 +25,21 @@ class DayOfWeekHolidayTest {
   @Test
   public void monthDayCannotBeNull() {
     assertThrows(NullPointerException.class, () -> new DayOfWeekHoliday(null));
+  }
+
+  @Test
+  public void checkDoesNotAcceptNull() {
+    assertThrows(NullPointerException.class, () -> HOLIDAY.check(null));
+  }
+
+  @Test
+  public void nextDoesNotAcceptNull() {
+    assertThrows(NullPointerException.class, () -> HOLIDAY.next(null));
+  }
+
+  @Test
+  public void previousDoesNotAcceptNull() {
+    assertThrows(NullPointerException.class, () -> HOLIDAY.next(null));
   }
 
   @Test

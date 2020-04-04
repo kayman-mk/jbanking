@@ -32,6 +32,21 @@ public class RelativeHolidayTest {
     assertThrows(NullPointerException.class, () -> new RelativeHoliday(null, 0));
   }
 
+  @Test
+  public void checkDoesNotAcceptNull() {
+    assertThrows(NullPointerException.class, () -> HOLIDAY.check(null));
+  }
+
+  @Test
+  public void nextDoesNotAcceptNull() {
+    assertThrows(NullPointerException.class, () -> HOLIDAY.next(null));
+  }
+
+  @Test
+  public void previousDoesNotAcceptNull() {
+    assertThrows(NullPointerException.class, () -> HOLIDAY.next(null));
+  }
+
   @ParameterizedTest
   @ValueSource(ints = {1, 100, 1970, YEAR, 2050, 10000})
   public void holidayCheckSucceed(int year) {

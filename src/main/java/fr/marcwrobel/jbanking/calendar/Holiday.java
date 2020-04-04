@@ -17,7 +17,7 @@ public interface Holiday {
    * @param date the date to check.
    * @return <code>true</code> if the given date is an occurrence of this holiday, <code>false
    *     </code> otherwise.
-   * @throws IllegalArgumentException if the given date is <code>null</code>.
+   * @throws NullPointerException if the given date is <code>null</code>.
    */
   boolean check(LocalDate date);
 
@@ -27,7 +27,7 @@ public interface Holiday {
    * @param from the date (excluded) from which the computation starts.
    * @return the previous occurrence of this bank holiday, or {@link Optional#empty()} if there is
    *     none.
-   * @throws IllegalArgumentException if the given date is <code>null</code>.
+   * @throws NullPointerException if the given date is <code>null</code>.
    */
   Optional<LocalDate> previous(LocalDate from);
 
@@ -36,7 +36,7 @@ public interface Holiday {
    *
    * @param from the date (excluded) from which the computation starts.
    * @return the next occurrence of this bank holiday, or {@link Optional#empty()} if there is none.
-   * @throws IllegalArgumentException if the given date is <code>null</code>.
+   * @throws NullPointerException if the given date is <code>null</code>.
    */
   Optional<LocalDate> next(LocalDate from);
 }
