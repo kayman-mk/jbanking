@@ -25,7 +25,7 @@ public class RelativeHolidayTest {
   private static final LocalDate HOLIDAY_2021 = HOLIDAY_2020.plusYears(1);
 
   private static final RelativeHoliday HOLIDAY =
-      new RelativeHoliday(new FixedHoliday(MonthDay.of(MONTH, DAY)), SHIFT);
+      new RelativeHoliday(new MonthDayHoliday(MonthDay.of(MONTH, DAY)), SHIFT);
 
   @Test
   public void baseCannotBeNull() {

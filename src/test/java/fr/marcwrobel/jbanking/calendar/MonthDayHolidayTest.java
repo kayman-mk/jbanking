@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class FixedHolidayTest {
+class MonthDayHolidayTest {
 
   private static final int YEAR = 2020;
   private static final int MONTH = 6;
@@ -25,26 +25,26 @@ class FixedHolidayTest {
   private static final LocalDate HOLIDAY_2019 = HOLIDAY_2020.minusYears(1);
   private static final LocalDate HOLIDAY_2021 = HOLIDAY_2020.plusYears(1);
 
-  private static final FixedHoliday HOLIDAY = new FixedHoliday(MonthDay.of(MONTH, DAY));
+  private static final MonthDayHoliday HOLIDAY = new MonthDayHoliday(MonthDay.of(MONTH, DAY));
 
   @Test
   public void monthDayCannotBeNull() {
-    assertThrows(NullPointerException.class, () -> new FixedHoliday((MonthDay) null));
+    assertThrows(NullPointerException.class, () -> new MonthDayHoliday((MonthDay) null));
   }
 
   @Test
   public void textCannotBeNull() {
-    assertThrows(NullPointerException.class, () -> new FixedHoliday((CharSequence) null));
+    assertThrows(NullPointerException.class, () -> new MonthDayHoliday((CharSequence) null));
   }
 
   @Test
   public void textMustBeAValidMonthDay() {
-    assertThrows(DateTimeParseException.class, () -> new FixedHoliday("test"));
+    assertThrows(DateTimeParseException.class, () -> new MonthDayHoliday("test"));
   }
 
   @Test
   public void validTextDoesNotThrows() {
-    assertDoesNotThrow(() -> new FixedHoliday("--12-03"));
+    assertDoesNotThrow(() -> new MonthDayHoliday("--12-03"));
   }
 
   @ParameterizedTest

@@ -7,7 +7,7 @@ import java.time.MonthDay;
 import java.util.Optional;
 
 /** A {@link Holiday} occurring every year the same day and month. */
-public final class FixedHoliday implements Holiday {
+public final class MonthDayHoliday implements Holiday {
 
   private final MonthDay monthDay;
 
@@ -17,7 +17,7 @@ public final class FixedHoliday implements Holiday {
    * @param monthDay a non-null {@link MonthDay}
    * @throws NullPointerException if the given {@link MonthDay} is <code>null</code>
    */
-  public FixedHoliday(MonthDay monthDay) {
+  public MonthDayHoliday(MonthDay monthDay) {
     this.monthDay = requireNonNull(monthDay);
   }
 
@@ -30,7 +30,7 @@ public final class FixedHoliday implements Holiday {
    * @throws NullPointerException if the given text is <code>null</code>
    * @throws java.time.format.DateTimeParseException if the text cannot be parsed
    */
-  public FixedHoliday(CharSequence text) {
+  public MonthDayHoliday(CharSequence text) {
     this.monthDay = MonthDay.parse(text);
   }
 
