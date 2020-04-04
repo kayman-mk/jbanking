@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 /**
- * The <a href="https://en.wikipedia.org/wiki/Easter#Computations">Easter</a> {@link Holiday}.
+ * This class is modeling the <a href="https://wikipedia.org/wiki/Easter">western easter sunday</a>.
  *
  * <p>This class computes the date of Easter Sunday with the Meeus/Jones/Butcher Gregorian
  * algorithm.

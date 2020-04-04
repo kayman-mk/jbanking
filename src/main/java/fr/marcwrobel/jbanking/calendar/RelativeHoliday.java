@@ -5,7 +5,13 @@ import static java.util.Objects.requireNonNull;
 import java.time.LocalDate;
 import java.util.Optional;
 
-/** A {@link Holiday} relative to another {@link Holiday}. */
+/**
+ * A {@link Holiday} relative to another {@link Holiday} with a fixed day shift.
+ *
+ * <p>This class is useful for modeling holidays like <a
+ * href="https://wikipedia.org/wiki/Easter_Monday" easter monday</a> or <a
+ * href="https://en.wikipedia.org/wiki/Good_Friday">good friday</a>.
+ */
 public class RelativeHoliday implements Holiday {
 
   private final Holiday base;
@@ -15,7 +21,7 @@ public class RelativeHoliday implements Holiday {
    * Create a new holiday using the given {@link Holiday base holiday} and the given number of days
    * as the shift.
    *
-   * @param base a non-null holiday to use as the base.
+   * @param base a non-null holiday to use as a base.
    * @param plusDays a number of days to use as the shift (may be negative)
    * @throws NullPointerException if the given base is <code>null</code>
    */
