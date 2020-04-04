@@ -6,7 +6,11 @@ import java.time.LocalDate;
 import java.time.MonthDay;
 import java.util.Optional;
 
-/** A {@link Holiday} occurring every year the same day and month. */
+/**
+ * A {@link Holiday} occurring the same day and month every year.
+ *
+ * <p>This class is useful for modeling holidays like christmas.
+ */
 public final class MonthDayHoliday implements Holiday {
 
   private final MonthDay monthDay;
@@ -19,19 +23,6 @@ public final class MonthDayHoliday implements Holiday {
    */
   public MonthDayHoliday(MonthDay monthDay) {
     this.monthDay = requireNonNull(monthDay);
-  }
-
-  /**
-   * Create a new FixedHoliday using the given from a text string such as <code>--12-03</code>.
-   *
-   * <p>The string must represent a valid month-day. The format is <code>--MM-dd</code>.
-   *
-   * @param text the text to parse such as "--12-03", not null
-   * @throws NullPointerException if the given text is <code>null</code>
-   * @throws java.time.format.DateTimeParseException if the text cannot be parsed
-   */
-  public MonthDayHoliday(CharSequence text) {
-    this.monthDay = MonthDay.parse(text);
   }
 
   /** @see Holiday#check(LocalDate) */

@@ -2,14 +2,12 @@ package fr.marcwrobel.jbanking.calendar;
 
 import static java.time.Month.DECEMBER;
 import static java.time.Month.JANUARY;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 import java.time.MonthDay;
-import java.time.format.DateTimeParseException;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -29,22 +27,7 @@ class MonthDayHolidayTest {
 
   @Test
   public void monthDayCannotBeNull() {
-    assertThrows(NullPointerException.class, () -> new MonthDayHoliday((MonthDay) null));
-  }
-
-  @Test
-  public void textCannotBeNull() {
-    assertThrows(NullPointerException.class, () -> new MonthDayHoliday((CharSequence) null));
-  }
-
-  @Test
-  public void textMustBeAValidMonthDay() {
-    assertThrows(DateTimeParseException.class, () -> new MonthDayHoliday("test"));
-  }
-
-  @Test
-  public void validTextDoesNotThrows() {
-    assertDoesNotThrow(() -> new MonthDayHoliday("--12-03"));
+    assertThrows(NullPointerException.class, () -> new MonthDayHoliday(null));
   }
 
   @ParameterizedTest

@@ -3,7 +3,16 @@ package fr.marcwrobel.jbanking.calendar;
 import java.time.LocalDate;
 import java.util.Optional;
 
-/** The <a href="https://en.wikipedia.org/wiki/Easter#Computations">Easter</a> {@link Holiday}. */
+/**
+ * The <a href="https://en.wikipedia.org/wiki/Easter#Computations">Easter</a> {@link Holiday}.
+ *
+ * <p>This class computes the date of Easter Sunday with the Meeus/Jones/Butcher Gregorian
+ * algorithm.
+ *
+ * @see <a
+ *     href="http://en.wikipedia.org/wiki/Computus#Meeus.2FJones.2FButcher_Gregorian_algorithm">Meeus/Jones/Butcher
+ *     Gregorian algorithm</a>
+ */
 public class EasterHoliday implements Holiday {
 
   /** @see Holiday#check(LocalDate) */
@@ -38,13 +47,6 @@ public class EasterHoliday implements Holiday {
     return Optional.of(next);
   }
 
-  /**
-   * Compute the date of Easter Sunday with the Meeus/Jones/Butcher Gregorian algorithm.
-   *
-   * @see <a
-   *     href="http://en.wikipedia.org/wiki/Computus#Meeus.2FJones.2FButcher_Gregorian_algorithm">Meeus/Jones/Butcher
-   *     Gregorian algorithm</a>
-   */
   private static LocalDate meeusJonesButcherComputus(final int year) {
     final int a = year % 19;
     final int b = year / 100;
