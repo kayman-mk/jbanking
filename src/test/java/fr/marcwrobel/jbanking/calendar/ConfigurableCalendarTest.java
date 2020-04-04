@@ -16,7 +16,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class CalendarTest {
+class ConfigurableCalendarTest {
 
   private static final LocalDate MONDAY = LocalDate.of(2020, 3, 30);
   private static final LocalDate TUESDAY = MONDAY.plusDays(1);
@@ -31,36 +31,36 @@ class CalendarTest {
   private static final Holiday SUNDAY_HOLIDAY1 = DayOfWeekHoliday.SUNDAY;
   private static final Holiday SUNDAY_HOLIDAY2 = new MonthDayHoliday(MonthDay.from(SUNDAY));
   private static final Calendar WEEKEND_CALENDAR =
-      new Calendar(asList(SATURDAY_HOLIDAY, SUNDAY_HOLIDAY1, SUNDAY_HOLIDAY2));
+      new ConfigurableCalendar(asList(SATURDAY_HOLIDAY, SUNDAY_HOLIDAY1, SUNDAY_HOLIDAY2));
 
   @Test
   public void holidaysMustNotBeNull() {
-    assertThrows(NullPointerException.class, () -> new Calendar(null));
+    assertThrows(NullPointerException.class, () -> new ConfigurableCalendar(null));
   }
 
   @Test
   public void emptyCalendarDateCalculation() {
-    Calendar calendar = new Calendar(new ArrayList<>());
+    Calendar emptyCalendar = new ConfigurableCalendar(new ArrayList<>());
     LocalDate date = LocalDate.of(2020, 4, 14);
 
-    assertTrue(calendar.isBusinessDay(date));
-    assertFalse(calendar.isHoliday(date));
-    assertEquals(date.plusDays(1), calendar.nextBusinessDay(date));
-    assertEquals(date.minusDays(1), calendar.previousBusinessDay(date));
+    assertTrue(emptyCalendar.isBusinessDay(date));
+    assertFalse(emptyCalendar.isHoliday(date));
+    assertEquals(date.plusDays(1), emptyCalendar.nextBusinessDay(date));
+    assertEquals(date.minusDays(1), emptyCalendar.previousBusinessDay(date));
   }
 
   @Test
   public void badCalendarDateCalculation() {
-    Calendar calendar = new Calendar(asList(DayOfWeekHoliday.values()));
+    Calendar fullCalendar = new ConfigurableCalendar(asList(DayOfWeekHoliday.values()));
     LocalDate date = LocalDate.of(2020, 4, 14);
 
     for (int i = 0; i < 365; i++) {
-      assertTrue(calendar.isHoliday(date));
-      assertFalse(calendar.isBusinessDay(date));
+      assertTrue(fullCalendar.isHoliday(date));
+      assertFalse(fullCalendar.isBusinessDay(date));
     }
 
-    assertThrows(DateCalculationException.class, () -> calendar.nextBusinessDay(date));
-    assertThrows(DateCalculationException.class, () -> calendar.previousBusinessDay(date));
+    assertThrows(DateCalculationException.class, () -> fullCalendar.nextBusinessDay(date));
+    assertThrows(DateCalculationException.class, () -> fullCalendar.previousBusinessDay(date));
   }
 
   @Test
