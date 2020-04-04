@@ -9,7 +9,7 @@ import java.util.Optional;
  * A {@link Holiday} relative to another {@link Holiday} with a fixed day shift.
  *
  * <p>This class is useful for modeling holidays like <a
- * href="https://wikipedia.org/wiki/Easter_Monday" easter monday</a> or <a
+ * href="https://wikipedia.org/wiki/Easter_Monday">easter monday</a> or <a
  * href="https://en.wikipedia.org/wiki/Good_Friday">good friday</a>.
  */
 public class RelativeHoliday implements Holiday {
