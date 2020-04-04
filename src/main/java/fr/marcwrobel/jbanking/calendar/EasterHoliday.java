@@ -6,14 +6,14 @@ import java.util.Optional;
 /**
  * This class is modeling the <a href="https://wikipedia.org/wiki/Easter">western easter sunday</a>.
  *
- * <p>This class computes the date of Easter Sunday with the Meeus/Jones/Butcher Gregorian
- * algorithm.
+ * <p>The date of Easter Sunday is computed with the Meeus/Jones/Butcher Gregorian algorithm.
  *
  * @see <a
  *     href="http://en.wikipedia.org/wiki/Computus#Meeus.2FJones.2FButcher_Gregorian_algorithm">Meeus/Jones/Butcher
  *     Gregorian algorithm</a>
  */
-public class EasterHoliday implements Holiday {
+public enum EasterHoliday implements Holiday {
+  INSTANCE;
 
   /** @see Holiday#check(LocalDate) */
   @Override

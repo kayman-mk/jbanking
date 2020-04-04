@@ -20,12 +20,7 @@ class DayOfWeekHolidayTest {
   private static final LocalDate PREVIOUS_WEEK = CURRENT_WEEK.minusWeeks(1);
   private static final LocalDate NEXT_WEEK = CURRENT_WEEK.plusWeeks(1);
 
-  private static final DayOfWeekHoliday HOLIDAY = new DayOfWeekHoliday(DAY_OF_WEEK);
-
-  @Test
-  public void monthDayCannotBeNull() {
-    assertThrows(NullPointerException.class, () -> new DayOfWeekHoliday(null));
-  }
+  private static final DayOfWeekHoliday HOLIDAY = DayOfWeekHoliday.TUESDAY;
 
   @Test
   public void checkDoesNotAcceptNull() {

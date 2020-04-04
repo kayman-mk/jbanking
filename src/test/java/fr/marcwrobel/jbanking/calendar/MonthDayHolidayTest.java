@@ -119,4 +119,16 @@ class MonthDayHolidayTest {
     assertTrue(HOLIDAY.check(next.get()));
     assertEquals(HOLIDAY_2021, next.get());
   }
+
+  @Test
+  public void equalsAndHashCodeAndToString() {
+    MonthDayHoliday holiday1 = new MonthDayHoliday(MonthDay.of(MONTH, DAY));
+    MonthDayHoliday holiday2 = new MonthDayHoliday(MonthDay.of(MONTH, DAY));
+
+    assertEquals(holiday1, holiday2);
+    assertEquals(holiday2, holiday1);
+    assertEquals(holiday1, holiday1);
+    assertEquals(holiday1.hashCode(), holiday2.hashCode());
+    assertEquals(holiday1.toString(), holiday2.toString());
+  }
 }

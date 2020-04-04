@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDate;
 import java.time.MonthDay;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -57,5 +58,29 @@ public final class MonthDayHoliday implements Holiday {
     }
 
     return Optional.of(result);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    MonthDayHoliday that = (MonthDayHoliday) o;
+    return monthDay.equals(that.monthDay);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(monthDay);
+  }
+
+  @Override
+  public String toString() {
+    return "MonthDayHoliday{" + "monthDay=" + monthDay + '}';
   }
 }

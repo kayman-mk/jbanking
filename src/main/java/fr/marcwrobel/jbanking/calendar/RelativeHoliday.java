@@ -3,6 +3,7 @@ package fr.marcwrobel.jbanking.calendar;
 import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Optional;
  * href="https://wikipedia.org/wiki/Easter_Monday">easter monday</a> or <a
  * href="https://en.wikipedia.org/wiki/Good_Friday">good friday</a>.
  */
-public class RelativeHoliday implements Holiday {
+public final class RelativeHoliday implements Holiday {
 
   private final Holiday base;
   private final int plusDays;
@@ -48,5 +49,29 @@ public class RelativeHoliday implements Holiday {
   public Optional<LocalDate> next(LocalDate from) {
     Optional<LocalDate> next = base.next(from.minusDays(plusDays));
     return next.map(d -> d.plusDays(plusDays));
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    RelativeHoliday that = (RelativeHoliday) o;
+    return plusDays == that.plusDays && base.equals(that.base);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(base, plusDays);
+  }
+
+  @Override
+  public String toString() {
+    return "RelativeHoliday{" + "base=" + base + ", plusDays=" + plusDays + '}';
   }
 }

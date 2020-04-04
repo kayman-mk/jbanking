@@ -27,7 +27,7 @@ class EasterHolidayTest {
   private static final LocalDate HOLIDAY_2019 = LocalDate.of(YEAR - 1, MONTH, 21);
   private static final LocalDate HOLIDAY_2021 = LocalDate.of(YEAR + 1, MONTH, 4);
 
-  private static final EasterHoliday HOLIDAY = new EasterHoliday();
+  private static final EasterHoliday HOLIDAY = EasterHoliday.INSTANCE;
 
   @Test
   public void checkDoesNotAcceptNull() {

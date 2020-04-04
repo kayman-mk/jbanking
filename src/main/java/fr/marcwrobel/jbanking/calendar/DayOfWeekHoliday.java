@@ -11,17 +11,18 @@ import java.util.Optional;
  *
  * <p>This class is useful for modeling saturday and sunday.
  */
-public final class DayOfWeekHoliday implements Holiday {
+public enum DayOfWeekHoliday implements Holiday {
+  MONDAY(DayOfWeek.MONDAY),
+  TUESDAY(DayOfWeek.TUESDAY),
+  WEDNESDAY(DayOfWeek.WEDNESDAY),
+  THURSDAY(DayOfWeek.THURSDAY),
+  FRIDAY(DayOfWeek.FRIDAY),
+  SATURDAY(DayOfWeek.SATURDAY),
+  SUNDAY(DayOfWeek.SUNDAY);
 
   private final DayOfWeek dayOfWeek;
 
-  /**
-   * Create a new holiday using the given {@link DayOfWeek}
-   *
-   * @param dayOfWeek a non-null {@link DayOfWeek}
-   * @throws NullPointerException if the given {@link DayOfWeek} is <code>null</code>
-   */
-  public DayOfWeekHoliday(DayOfWeek dayOfWeek) {
+  DayOfWeekHoliday(DayOfWeek dayOfWeek) {
     this.dayOfWeek = requireNonNull(dayOfWeek);
   }
 

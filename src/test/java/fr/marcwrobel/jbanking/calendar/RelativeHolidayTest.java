@@ -24,8 +24,8 @@ public class RelativeHolidayTest {
   private static final LocalDate HOLIDAY_2019 = HOLIDAY_2020.minusYears(1);
   private static final LocalDate HOLIDAY_2021 = HOLIDAY_2020.plusYears(1);
 
-  private static final RelativeHoliday HOLIDAY =
-      new RelativeHoliday(new MonthDayHoliday(MonthDay.of(MONTH, DAY)), SHIFT);
+  private static final Holiday BASE = new MonthDayHoliday(MonthDay.of(MONTH, DAY));
+  private static final RelativeHoliday HOLIDAY = new RelativeHoliday(BASE, SHIFT);
 
   @Test
   public void baseCannotBeNull() {
@@ -120,5 +120,17 @@ public class RelativeHolidayTest {
     assertTrue(next.isPresent());
     assertTrue(HOLIDAY.check(next.get()));
     assertEquals(HOLIDAY_2021, next.get());
+  }
+
+  @Test
+  public void equalsAndHashCodeAndToString() {
+    RelativeHoliday holiday1 = new RelativeHoliday(BASE, SHIFT);
+    RelativeHoliday holiday2 = new RelativeHoliday(BASE, SHIFT);
+
+    assertEquals(holiday1, holiday2);
+    assertEquals(holiday2, holiday1);
+    assertEquals(holiday1, holiday1);
+    assertEquals(holiday1.hashCode(), holiday2.hashCode());
+    assertEquals(holiday1.toString(), holiday2.toString());
   }
 }
