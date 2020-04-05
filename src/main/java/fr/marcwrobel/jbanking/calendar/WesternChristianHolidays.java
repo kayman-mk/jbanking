@@ -40,6 +40,17 @@ public enum WesternChristianHolidays implements Holiday {
   ASSUMPTION_OF_MARY(new MonthDayHoliday(MonthDay.of(AUGUST, 15))),
 
   /**
+   * Boxing Day is a holiday celebrated the day after Christmas Day, thus being the second day of
+   * Christmastide. It originated in the United Kingdom and is celebrated in a number of countries
+   * that previously formed part of the British Empire. Boxing Day is on 26 December, although the
+   * attached bank holiday or public holiday may take place either on that day or two days later.
+   *
+   * @see <a href="https://en.wikipedia.org/wiki/Boxing_Day">Wikipedia</a>
+   * @see #SAINT_STEPHENS_DAY
+   */
+  BOXING_DAY(new MonthDayHoliday(MonthDay.of(DECEMBER, 26))),
+
+  /**
    * Christmas (or Feast of the Nativity) is an annual festival commemorating the birth of Jesus
    * Christ, observed primarily on December 25 as a religious and cultural celebration among
    * billions of people around the world.
@@ -92,6 +103,7 @@ public enum WesternChristianHolidays implements Holiday {
    * in the Latin Church and 27 December in Eastern Christianity.
    *
    * @see <a href="https://wikipedia.org/wiki/Saint_Stephen%27s_Day">Wikipedia</a>
+   * @see #BOXING_DAY
    */
   SAINT_STEPHENS_DAY(new MonthDayHoliday(MonthDay.of(DECEMBER, 26))),
 
