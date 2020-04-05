@@ -22,7 +22,7 @@ public enum StandardCalendars implements Calendar {
           WorldEventHolidays.VICTORY_IN_EUROPE_DAY,
           WesternChristianHolidays.ASCENSION_DAY,
           WesternChristianHolidays.WHIT_MONDAY,
-          FrenchHolidays.BASTILLE_DAY,
+          NationalHolidays.BASTILLE_DAY,
           WesternChristianHolidays.ASSUMPTION_OF_MARY,
           WesternChristianHolidays.ALL_SAINTS_DAY,
           WorldEventHolidays.ARMISTICE_DAY,
@@ -43,7 +43,7 @@ public enum StandardCalendars implements Calendar {
           WorldEventHolidays.INTERNATIONAL_WORKERS_DAY,
           WesternChristianHolidays.ASCENSION_DAY,
           WesternChristianHolidays.WHIT_MONDAY,
-          GermanHolidays.GERMAN_UNITY_DAY,
+          NationalHolidays.GERMAN_UNITY_DAY,
           WesternChristianHolidays.CHRISTMAS,
           WesternChristianHolidays.SAINT_STEPHENS_DAY)),
 
