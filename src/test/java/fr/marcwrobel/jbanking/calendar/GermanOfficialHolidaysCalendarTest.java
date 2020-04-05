@@ -17,54 +17,6 @@ class GermanOfficialHolidaysCalendarTest extends CalendarTestSupport {
     super(StandardCalendars.GERMAN_OFFICIAL_HOLIDAYS);
   }
 
-  // https://www.timeanddate.com/holidays/germany/2015?hol=1
-  @Test
-  public void year2015() {
-    check(
-        2015,
-        of(JANUARY, 1),
-        of(APRIL, 3),
-        of(APRIL, 6),
-        of(MAY, 1),
-        of(MAY, 14),
-        of(MAY, 25),
-        of(OCTOBER, 3),
-        of(DECEMBER, 25),
-        of(DECEMBER, 26));
-  }
-
-  // https://www.timeanddate.com/holidays/germany/2016?hol=1
-  @Test
-  public void year2016() {
-    check(
-        2016,
-        of(JANUARY, 1),
-        of(MARCH, 25),
-        of(MARCH, 28),
-        of(MAY, 1),
-        of(MAY, 5),
-        of(MAY, 16),
-        of(OCTOBER, 3),
-        of(DECEMBER, 25),
-        of(DECEMBER, 26));
-  }
-
-  // https://www.timeanddate.com/holidays/germany/2017?hol=1
-  @Test
-  public void year2017() {
-    check(
-        2017,
-        of(JANUARY, 1),
-        of(APRIL, 14),
-        of(APRIL, 17),
-        of(MAY, 1),
-        of(MAY, 25),
-        of(JUNE, 5),
-        of(OCTOBER, 3),
-        of(DECEMBER, 25),
-        of(DECEMBER, 26));
-  }
-
   // https://www.timeanddate.com/holidays/germany/2018?hol=1
   @Test
   public void year2018() {
@@ -140,54 +92,6 @@ class GermanOfficialHolidaysCalendarTest extends CalendarTestSupport {
         of(MAY, 1),
         of(MAY, 26),
         of(JUNE, 6),
-        of(OCTOBER, 3),
-        of(DECEMBER, 25),
-        of(DECEMBER, 26));
-  }
-
-  // https://www.timeanddate.com/holidays/germany/2023?hol=1
-  @Test
-  public void year2023() {
-    check(
-        2023,
-        of(JANUARY, 1),
-        of(APRIL, 7),
-        of(APRIL, 10),
-        of(MAY, 1),
-        of(MAY, 18),
-        of(MAY, 29),
-        of(OCTOBER, 3),
-        of(DECEMBER, 25),
-        of(DECEMBER, 26));
-  }
-
-  // https://www.timeanddate.com/holidays/germany/2024?hol=1
-  @Test
-  public void year2024() {
-    check(
-        2024,
-        of(JANUARY, 1),
-        of(MARCH, 29),
-        of(APRIL, 1),
-        of(MAY, 1),
-        of(MAY, 9),
-        of(MAY, 20),
-        of(OCTOBER, 3),
-        of(DECEMBER, 25),
-        of(DECEMBER, 26));
-  }
-
-  // https://www.timeanddate.com/holidays/germany/2025?hol=1
-  @Test
-  public void year2025() {
-    check(
-        2025,
-        of(JANUARY, 1),
-        of(APRIL, 18),
-        of(APRIL, 21),
-        of(MAY, 1),
-        of(MAY, 29),
-        of(JUNE, 9),
         of(OCTOBER, 3),
         of(DECEMBER, 25),
         of(DECEMBER, 26));

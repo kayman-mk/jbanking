@@ -18,57 +18,6 @@ class USFederalHolidaysCalendarTest extends CalendarTestSupport {
     super(StandardCalendars.US_FEDERAL_HOLIDAYS);
   }
 
-  // https://www.timeanddate.com/holidays/us/2015?hol=1
-  @Test
-  public void year2015() {
-    check(
-        2015,
-        of(JANUARY, 1),
-        of(JANUARY, 19),
-        of(FEBRUARY, 16),
-        of(MAY, 25),
-        of(JULY, 3),
-        of(SEPTEMBER, 7),
-        of(OCTOBER, 12),
-        of(NOVEMBER, 11),
-        of(NOVEMBER, 26),
-        of(DECEMBER, 25));
-  }
-
-  // https://www.timeanddate.com/holidays/us/2016?hol=1
-  @Test
-  public void year2016() {
-    check(
-        2016,
-        of(JANUARY, 1),
-        of(JANUARY, 18),
-        of(FEBRUARY, 15),
-        of(MAY, 30),
-        of(JULY, 4),
-        of(SEPTEMBER, 5),
-        of(OCTOBER, 10),
-        of(NOVEMBER, 11),
-        of(NOVEMBER, 24),
-        of(DECEMBER, 26));
-  }
-
-  // https://www.timeanddate.com/holidays/us/2017?hol=1
-  @Test
-  public void year2017() {
-    check(
-        2017,
-        of(JANUARY, 2),
-        of(JANUARY, 16),
-        of(FEBRUARY, 20),
-        of(MAY, 29),
-        of(JULY, 4),
-        of(SEPTEMBER, 4),
-        of(OCTOBER, 9),
-        of(NOVEMBER, 10),
-        of(NOVEMBER, 23),
-        of(DECEMBER, 25));
-  }
-
   // https://www.timeanddate.com/holidays/us/2018?hol=1
   @Test
   public void year2018() {
@@ -152,56 +101,5 @@ class USFederalHolidaysCalendarTest extends CalendarTestSupport {
         of(NOVEMBER, 11),
         of(NOVEMBER, 24),
         of(DECEMBER, 26));
-  }
-
-  // https://www.timeanddate.com/holidays/us/2023?hol=1
-  @Test
-  public void year2023() {
-    check(
-        2023,
-        of(JANUARY, 2),
-        of(JANUARY, 16),
-        of(FEBRUARY, 20),
-        of(MAY, 29),
-        of(JULY, 4),
-        of(SEPTEMBER, 4),
-        of(OCTOBER, 9),
-        of(NOVEMBER, 10),
-        of(NOVEMBER, 23),
-        of(DECEMBER, 25));
-  }
-
-  // https://www.timeanddate.com/holidays/us/2024?hol=1
-  @Test
-  public void year2024() {
-    check(
-        2024,
-        of(JANUARY, 1),
-        of(JANUARY, 15),
-        of(FEBRUARY, 19),
-        of(MAY, 27),
-        of(JULY, 4),
-        of(SEPTEMBER, 2),
-        of(OCTOBER, 14),
-        of(NOVEMBER, 11),
-        of(NOVEMBER, 28),
-        of(DECEMBER, 25));
-  }
-
-  // https://www.timeanddate.com/holidays/us/2025?hol=1
-  @Test
-  public void year2025() {
-    check(
-        2025,
-        of(JANUARY, 1),
-        of(JANUARY, 20),
-        of(FEBRUARY, 17),
-        of(MAY, 26),
-        of(JULY, 4),
-        of(SEPTEMBER, 1),
-        of(OCTOBER, 13),
-        of(NOVEMBER, 11),
-        of(NOVEMBER, 27),
-        of(DECEMBER, 25));
   }
 }

@@ -15,45 +15,6 @@ class Target2CalendarTest extends CalendarTestSupport {
     super(StandardCalendars.TARGET2);
   }
 
-  // https://www.sepaforcorporates.com/single-euro-payments-area/sepa-holidays-2014-2015-the-dates-and-why-you-need-to-know-them/
-  @Test
-  public void year2015() {
-    check(
-        2015,
-        of(JANUARY, 1),
-        of(APRIL, 3),
-        of(APRIL, 6),
-        of(MAY, 1),
-        of(DECEMBER, 25),
-        of(DECEMBER, 26));
-  }
-
-  // https://www.sepaforcorporates.com/single-euro-payments-area/sepa-holidays-2014-2015-the-dates-and-why-you-need-to-know-them/
-  @Test
-  public void year2016() {
-    check(
-        2016,
-        of(JANUARY, 1),
-        of(MARCH, 25),
-        of(MARCH, 28),
-        of(MAY, 1),
-        of(DECEMBER, 25),
-        of(DECEMBER, 26));
-  }
-
-  // https://www.sepaforcorporates.com/single-euro-payments-area/european-sepa-target-closing-days-2017-2018/
-  @Test
-  public void year2017() {
-    check(
-        2017,
-        of(JANUARY, 1),
-        of(APRIL, 14),
-        of(APRIL, 17),
-        of(MAY, 1),
-        of(DECEMBER, 25),
-        of(DECEMBER, 26));
-  }
-
   // https://www.sepaforcorporates.com/single-euro-payments-area/european-sepa-target-closing-days-2017-2018/
   @Test
   public void year2018() {
