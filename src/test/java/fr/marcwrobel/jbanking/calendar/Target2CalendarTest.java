@@ -5,13 +5,13 @@ import static java.time.Month.DECEMBER;
 import static java.time.Month.JANUARY;
 import static java.time.Month.MARCH;
 import static java.time.Month.MAY;
+import static java.time.MonthDay.of;
 
-import java.time.MonthDay;
 import org.junit.jupiter.api.Test;
 
-class TargetCalendarTest extends CalendarTestSupport {
+class Target2CalendarTest extends CalendarTestSupport {
 
-  protected TargetCalendarTest() {
+  protected Target2CalendarTest() {
     super(StandardCalendars.TARGET2);
   }
 
@@ -20,12 +20,12 @@ class TargetCalendarTest extends CalendarTestSupport {
   public void year2015() {
     check(
         2015,
-        MonthDay.of(JANUARY, 1),
-        MonthDay.of(APRIL, 3),
-        MonthDay.of(APRIL, 6),
-        MonthDay.of(MAY, 1),
-        MonthDay.of(DECEMBER, 25),
-        MonthDay.of(DECEMBER, 26));
+        of(JANUARY, 1),
+        of(APRIL, 3),
+        of(APRIL, 6),
+        of(MAY, 1),
+        of(DECEMBER, 25),
+        of(DECEMBER, 26));
   }
 
   // https://www.sepaforcorporates.com/single-euro-payments-area/sepa-holidays-2014-2015-the-dates-and-why-you-need-to-know-them/
@@ -33,12 +33,12 @@ class TargetCalendarTest extends CalendarTestSupport {
   public void year2016() {
     check(
         2016,
-        MonthDay.of(JANUARY, 1),
-        MonthDay.of(MARCH, 25),
-        MonthDay.of(MARCH, 28),
-        MonthDay.of(MAY, 1),
-        MonthDay.of(DECEMBER, 25),
-        MonthDay.of(DECEMBER, 26));
+        of(JANUARY, 1),
+        of(MARCH, 25),
+        of(MARCH, 28),
+        of(MAY, 1),
+        of(DECEMBER, 25),
+        of(DECEMBER, 26));
   }
 
   // https://www.sepaforcorporates.com/single-euro-payments-area/european-sepa-target-closing-days-2017-2018/
@@ -46,12 +46,12 @@ class TargetCalendarTest extends CalendarTestSupport {
   public void year2017() {
     check(
         2017,
-        MonthDay.of(JANUARY, 1),
-        MonthDay.of(APRIL, 14),
-        MonthDay.of(APRIL, 17),
-        MonthDay.of(MAY, 1),
-        MonthDay.of(DECEMBER, 25),
-        MonthDay.of(DECEMBER, 26));
+        of(JANUARY, 1),
+        of(APRIL, 14),
+        of(APRIL, 17),
+        of(MAY, 1),
+        of(DECEMBER, 25),
+        of(DECEMBER, 26));
   }
 
   // https://www.sepaforcorporates.com/single-euro-payments-area/european-sepa-target-closing-days-2017-2018/
@@ -59,12 +59,12 @@ class TargetCalendarTest extends CalendarTestSupport {
   public void year2018() {
     check(
         2018,
-        MonthDay.of(JANUARY, 1),
-        MonthDay.of(MARCH, 30),
-        MonthDay.of(APRIL, 2),
-        MonthDay.of(MAY, 1),
-        MonthDay.of(DECEMBER, 25),
-        MonthDay.of(DECEMBER, 26));
+        of(JANUARY, 1),
+        of(MARCH, 30),
+        of(APRIL, 2),
+        of(MAY, 1),
+        of(DECEMBER, 25),
+        of(DECEMBER, 26));
   }
 
   // https://www.sepaforcorporates.com/single-euro-payments-area/sepa-target-closing-days-2019-and-2020/
@@ -72,12 +72,12 @@ class TargetCalendarTest extends CalendarTestSupport {
   public void year2019() {
     check(
         2019,
-        MonthDay.of(JANUARY, 1),
-        MonthDay.of(APRIL, 19),
-        MonthDay.of(APRIL, 22),
-        MonthDay.of(MAY, 1),
-        MonthDay.of(DECEMBER, 25),
-        MonthDay.of(DECEMBER, 26));
+        of(JANUARY, 1),
+        of(APRIL, 19),
+        of(APRIL, 22),
+        of(MAY, 1),
+        of(DECEMBER, 25),
+        of(DECEMBER, 26));
   }
 
   // https://www.sepaforcorporates.com/single-euro-payments-area/sepa-target-closing-days-2019-and-2020/
@@ -85,11 +85,11 @@ class TargetCalendarTest extends CalendarTestSupport {
   public void year2020() {
     check(
         2020,
-        MonthDay.of(JANUARY, 1),
-        MonthDay.of(APRIL, 10),
-        MonthDay.of(APRIL, 13),
-        MonthDay.of(MAY, 1),
-        MonthDay.of(DECEMBER, 25),
-        MonthDay.of(DECEMBER, 26));
+        of(JANUARY, 1),
+        of(APRIL, 10),
+        of(APRIL, 13),
+        of(MAY, 1),
+        of(DECEMBER, 25),
+        of(DECEMBER, 26));
   }
 }

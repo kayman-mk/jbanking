@@ -12,80 +12,93 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.MonthDay;
 
-/** A set of {@link Holiday}s specific to United States. */
+/** {@link Holiday}s specific to the United States. */
 public enum AmericanHolidays implements Holiday {
 
   /**
-   * Columbus Day is a national holiday in many countries of the Americas and elsewhere which
-   * officially celebrates the anniversary of Christopher Columbus's arrival in the Americas on
-   * October 12, 1492.
+   * Christmas (or Feast of the Nativity) is an annual festival commemorating the birth of Jesus
+   * Christ.
    *
-   * @see <a href="https://wikipedia.org/wiki/Columbus_Day">Wikipedia</a>
+   * @see <a href="https://www.timeanddate.com/holidays/us/christmas-day">timeanddate.com</a>
+   */
+  CHRISTMAS(new ObservedOnWeekdayHoliday(WesternChristianHolidays.CHRISTMAS)),
+
+  /**
+   * Columbus Day, which is on the second Monday of October, remembers Christopher Columbus' arrival
+   * to the Americas on October 12, 1492.
+   *
+   * @see <a href="https://www.timeanddate.com/holidays/us/columbus-day">timeanddate.com</a>
    */
   COLUMBUS_DAY(new DayOfWeekInMonthHoliday(2, DayOfWeek.MONDAY, OCTOBER)),
 
   /**
-   * Independence Day (colloquially the Fourth of July or July 4th) is a federal holiday in the
-   * United States commemorating the Declaration of Independence of the United States, on July 4,
-   * 1776.
+   * Independence Day is annually celebrated on July 4 and is often known as "the Fourth of July".
+   * It is the anniversary of the publication of the declaration of independence from Great Britain
+   * in 1776.
    *
-   * @see <a href="https://wikipedia.org/wiki/Independence_Day_(United_States)">Wikipedia</a>
+   * @see <a href="https://www.timeanddate.com/holidays/us/independence-day">timeanddate.com</a>
    */
-  INDEPENDENCE_DAY(new MonthDayHoliday(MonthDay.of(JULY, 4))),
+  INDEPENDENCE_DAY(new ObservedOnWeekdayHoliday(new MonthDayHoliday(MonthDay.of(JULY, 4)))),
 
   /**
-   * Labor Day in the United States of America is a public holiday celebrated on the first Monday in
-   * September. It honors the American labor movement and the power of collective action by
-   * laborers, who are essential for the workings of society. It is the Monday of the long weekend
-   * known as Labor Day Weekend. It is recognized as a federal holiday.
+   * Labor Day is on the first Monday of September every year. It was originally organized to
+   * celebrate various labor unions' strengths of and contributions to the United States' economy.
    *
-   * @see <a href="https://wikipedia.org/wiki/Labor_Day">Wikipedia</a>
+   * @see <a href="https://www.timeanddate.com/holidays/us/labor-day">timeanddate.com</a>
    */
   LABOR_DAY(new DayOfWeekInMonthHoliday(1, DayOfWeek.MONDAY, SEPTEMBER)),
 
   /**
-   * Martin Luther King Jr. Day (officially Birthday of Martin Luther King, Jr., and sometimes
-   * referred to as MLK Day) is an American federal holiday marking the birthday of Martin Luther
-   * King Jr.
+   * Martin Luther King Day is a federal holiday held on the third Monday of January. It celebrates
+   * the life and achievements of Martin Luther King Jr.
    *
-   * @see <a href="https://wikipedia.org/wiki/Martin_Luther_King_Jr._Day">Wikipedia</a>
+   * @see <a
+   *     href="https://www.timeanddate.com/holidays/us/martin-luther-king-day">timeanddate.com</a>
    */
   MARTIN_LUTHER_KING_JR_DAY(new DayOfWeekInMonthHoliday(3, DayOfWeek.MONDAY, JANUARY)),
 
   /**
-   * Memorial Day (previously but now seldom called Decoration Day) is a federal holiday in the
-   * United States for remembering, honoring, and mourning the military personnel that had died
-   * while serving in the United States Armed Forces.
+   * Memorial Day is observed on the last Monday of May. It was formerly known as Decoration Day and
+   * commemorates all men and women who have died in military service for the United States.
    *
-   * @see <a href="https://wikipedia.org/wiki/Memorial_Day">Wikipedia</a>
+   * @see <a href="https://www.timeanddate.com/holidays/us/memorial-day">timeanddate.com</a>
    */
   MEMORIAL_DAY(new DayOfWeekInMonthHoliday(-1, DayOfWeek.MONDAY, MAY)),
 
   /**
-   * Washington's Birthday is a federal holiday in the United States celebrated on the third Monday
-   * of February in honor of George Washington, the first President of the United States.
-   * Colloquially, the day is also now widely known as Presidents' Day.
+   * New Year's Day falls on January 1 and marks the start of a new year according to the Gregorian
+   * calendar. It marks the end of New Year's Eve celebrations in the United States and gives many
+   * Americans a chance to remember the previous year.
    *
-   * @see <a href="https://wikipedia.org/wiki/Washington%27s_Birthday">Wikipedia</a>
+   * @see <a href="https://www.timeanddate.com/holidays/us/new-year-day">timeanddate.com</a>
    */
-  WASHINGTONS_BIRTHDAY(new DayOfWeekInMonthHoliday(3, DayOfWeek.MONDAY, FEBRUARY)),
+  NEW_YEAR_DAY(new ObservedOnWeekdayHoliday(WorldEventHolidays.NEW_YEAR_DAY)),
 
   /**
-   * Veterans Day (originally known as Armistice Day) is a federal holiday in the United States
-   * observed annually on November 11, for honoring military veterans.It coincides with other
-   * holidays including Armistice Day and Remembrance Day which are celebrated in other countries
-   * that mark the anniversary of the end of World War I.
+   * Presidents' Day, also known as Washington's Birthday, is a federal holiday held on the third
+   * Monday of February. The day honors presidents of the United States, including George
+   * Washington, the USA's first president.
    *
-   * @see <a href="https://wikipedia.org/wiki/Veterans_Day">Wikipedia</a>
+   * @see <a href="https://www.timeanddate.com/holidays/us/washington-birthday">timeanddate.com</a>
    */
-  VETERANS_DAY(WorldEventHolidays.ARMISTICE_DAY),
+  PRESIDENTS_DAY(new DayOfWeekInMonthHoliday(3, DayOfWeek.MONDAY, FEBRUARY)),
+
+  /**
+   * In the USA, Veterans Day annually falls on November 11. This day is the anniversary of the
+   * signing of the armistice, which ended the World War I hostilities between the Allied nations
+   * and Germany in 1918. Veterans are thanked for their services to the United States on Veterans
+   * Day.
+   *
+   * @see <a href="https://www.timeanddate.com/holidays/us/veterans-day">timeanddate.com</a>
+   */
+  VETERANS_DAY(new ObservedOnWeekdayHoliday(WorldEventHolidays.ARMISTICE_DAY)),
 
   /**
    * Thanksgiving is a federal holiday in the United States, celebrated on the fourth Thursday of
    * November. It originated as a harvest festival, and to this day the centerpiece of Thanksgiving
    * celebrations remains Thanksgiving dinner.
    *
-   * @see <a href="https://wikipedia.org/wiki/Thanksgiving_(United_States)">Wikipedia</a>
+   * @see <a href="https://www.timeanddate.com/holidays/us/thanksgiving-day">timeanddate.com</a>
    */
   THANKSGIVING(new DayOfWeekInMonthHoliday(4, DayOfWeek.THURSDAY, NOVEMBER));
 

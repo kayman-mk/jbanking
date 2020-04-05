@@ -7,23 +7,14 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A {@link Holiday} relative to another {@link Holiday} with that shift if it occurs during
- * weekend.
- *
- * <p>The shift algorithm is the following :
- *
- * <ul>
- *   <li>if the holiday occurs on {@link DayOfWeek#SATURDAY}, it is moved to the preceding {@link
- *       DayOfWeek#FRIDAY}
- *   <li>if the holiday occurs on {@link DayOfWeek#SUNDAY}, it is moved to the following {@link
- *       DayOfWeek#MONDAY}
- * </ul>
+ * {@link Holiday}s that are observed on the preceding {@link DayOfWeek#FRIDAY} or following {@link
+ * DayOfWeek#MONDAY} when they fall on {@link DayOfWeek#SATURDAY} or {@link DayOfWeek#SUNDAY}.
  *
  * <p>This class is useful for modeling holidays like <a
- * href="https://wikipedia.org/wiki/Easter_Monday">easter monday</a> or <a
- * href="https://wikipedia.org/wiki/Good_Friday">good friday</a>.
+ * href="https://wikipedia.org/wiki/Independence_Day_%28United_States%29">the Independence Day</a>
+ * in United States.
  */
-public final class ShiftOnWeekendHoliday implements Holiday {
+public final class ObservedOnWeekdayHoliday implements Holiday {
 
   private final Holiday base;
 
@@ -33,7 +24,7 @@ public final class ShiftOnWeekendHoliday implements Holiday {
    * @param base a non-null holiday to use as a base.
    * @throws NullPointerException if the given base is {@code null}
    */
-  public ShiftOnWeekendHoliday(Holiday base) {
+  public ObservedOnWeekdayHoliday(Holiday base) {
     this.base = requireNonNull(base);
   }
 
@@ -72,7 +63,7 @@ public final class ShiftOnWeekendHoliday implements Holiday {
       return false;
     }
 
-    ShiftOnWeekendHoliday that = (ShiftOnWeekendHoliday) o;
+    ObservedOnWeekdayHoliday that = (ObservedOnWeekdayHoliday) o;
     return base.equals(that.base);
   }
 

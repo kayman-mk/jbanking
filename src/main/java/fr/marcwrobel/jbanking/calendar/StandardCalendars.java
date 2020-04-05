@@ -8,7 +8,28 @@ import java.util.Set;
 public enum StandardCalendars implements Calendar {
 
   /**
-   * Long-term calendar for <a
+   * French national holidays calendar.
+   *
+   * @see <a href="https://www.timeanddate.com/holidays/france/?hol=1">timeanddate.com</a>
+   */
+  FRENCH_NATIONAL_HOLIDAYS(
+      new ConfigurableCalendar(
+          DayOfWeekHoliday.SATURDAY,
+          DayOfWeekHoliday.SUNDAY,
+          WorldEventHolidays.NEW_YEAR_DAY,
+          WesternChristianHolidays.EASTER_MONDAY,
+          WorldEventHolidays.INTERNATIONAL_WORKERS_DAY,
+          WorldEventHolidays.VICTORY_IN_EUROPE_DAY,
+          WesternChristianHolidays.ASCENSION_DAY,
+          WesternChristianHolidays.WHIT_MONDAY,
+          FrenchHolidays.BASTILLE_DAY,
+          WesternChristianHolidays.ASSUMPTION_OF_MARY,
+          WesternChristianHolidays.ALL_SAINTS_DAY,
+          WorldEventHolidays.ARMISTICE_DAY,
+          WesternChristianHolidays.CHRISTMAS)),
+
+  /**
+   * The calendar for <a
    * href="https://www.ecb.europa.eu/paym/target/target2/html/index.en.html">Trans-European
    * Automated Real-time Gross settlement Express Transfer (TARGET)</a> closing days, as described
    * on <a
@@ -28,23 +49,31 @@ public enum StandardCalendars implements Calendar {
           WesternChristianHolidays.SAINT_STEPHENS_DAY)),
 
   /**
-   * US Federal Reserve Bank Holidays, as described on <a
-   * href="https://www.federalreserve.gov/aboutthefed/k8.htm">federalreserve.gov</a>
+   * The US federal holidays calendar.
+   *
+   * <p>Though not technically accurate, U.S. federal holidays are often referred to as "public
+   * holidays" or "legal holidays" because of their wide spread observance. Bank holidays are
+   * usually the same as federal holidays since most banks follow the holiday calendar of the U.S.
+   * Federal Reserve.
+   *
+   * @see <a href="https://www.timeanddate.com/holidays/us/?hol=1">timeanddate.com</a>
+   * @see <a href="https://www.federalreserve.gov/aboutthefed/k8.htm">K.8 - Holidays Observed by the
+   *     Federal Reserve System</a>
    */
-  US_FEDERAL_RESERVE(
+  US_FEDERAL_HOLIDAYS(
       new ConfigurableCalendar(
           DayOfWeekHoliday.SATURDAY,
           DayOfWeekHoliday.SUNDAY,
-          new ShiftOnWeekendHoliday(WorldEventHolidays.NEW_YEAR_DAY),
+          AmericanHolidays.NEW_YEAR_DAY,
           AmericanHolidays.MARTIN_LUTHER_KING_JR_DAY,
-          AmericanHolidays.WASHINGTONS_BIRTHDAY,
+          AmericanHolidays.PRESIDENTS_DAY,
           AmericanHolidays.MEMORIAL_DAY,
-          new ShiftOnWeekendHoliday(AmericanHolidays.INDEPENDENCE_DAY),
+          AmericanHolidays.INDEPENDENCE_DAY,
           AmericanHolidays.LABOR_DAY,
           AmericanHolidays.COLUMBUS_DAY,
-          new ShiftOnWeekendHoliday(AmericanHolidays.VETERANS_DAY),
+          AmericanHolidays.VETERANS_DAY,
           AmericanHolidays.THANKSGIVING,
-          new ShiftOnWeekendHoliday(WesternChristianHolidays.CHRISTMAS)));
+          AmericanHolidays.CHRISTMAS));
 
   private final ConfigurableCalendar calendar;
 

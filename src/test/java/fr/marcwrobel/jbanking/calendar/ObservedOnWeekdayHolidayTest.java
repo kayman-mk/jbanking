@@ -12,13 +12,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class ShiftOnWeekendHolidayTest {
+class ObservedOnWeekdayHolidayTest {
 
   private static final Month MONTH = Month.JULY;
   private static final int DAY = 4;
 
   private static final MonthDayHoliday BASE = new MonthDayHoliday(MonthDay.of(MONTH, DAY));
-  private static final ShiftOnWeekendHoliday HOLIDAY = new ShiftOnWeekendHoliday(BASE);
+  private static final ObservedOnWeekdayHoliday HOLIDAY = new ObservedOnWeekdayHoliday(BASE);
 
   @Test
   public void baseCannotBeNull() {
@@ -53,9 +53,10 @@ class ShiftOnWeekendHolidayTest {
 
   @Test
   public void equalsAndHashCodeAndToString() {
-    Holiday holiday1 = new ShiftOnWeekendHoliday(BASE);
-    Holiday holiday2 = new ShiftOnWeekendHoliday(BASE);
-    Holiday holiday3 = new ShiftOnWeekendHoliday(new MonthDayHoliday(MonthDay.of(MONTH, DAY + 1)));
+    Holiday holiday1 = new ObservedOnWeekdayHoliday(BASE);
+    Holiday holiday2 = new ObservedOnWeekdayHoliday(BASE);
+    Holiday holiday3 =
+        new ObservedOnWeekdayHoliday(new MonthDayHoliday(MonthDay.of(MONTH, DAY + 1)));
 
     assertEquals(holiday1, holiday2);
     assertEquals(holiday2, holiday1);

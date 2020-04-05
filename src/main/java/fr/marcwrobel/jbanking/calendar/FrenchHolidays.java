@@ -5,7 +5,7 @@ import static java.time.Month.JULY;
 import java.time.LocalDate;
 import java.time.MonthDay;
 
-/** A set of {@link Holiday}s specific to France. */
+/** {@link Holiday}s specific to France. */
 public enum FrenchHolidays implements Holiday {
 
   /**

@@ -11,20 +11,22 @@ import java.time.MonthDay;
 public enum WesternChristianHolidays implements Holiday {
 
   /**
-   * All Saints' Day, also known as All Hallows' Day, Hallowmas, the Feast of All Saints or
-   * Solemnity of All Saints, is a Christian festival celebrated in honour of all the saints, known
-   * and unknown.
+   * All Saints' Day is a celebration of all Christian saints, particularly those who have no
+   * special feast days of their own, in many Roman Catholic, Anglican and Protestant churches. In
+   * many western churches it is annually held November 1 and in many eastern churches it is
+   * celebrated on the first Sunday after Pentecost. It is also known as All Hallows Tide,
+   * All-Hallomas, or All Hallows' Day.
    *
-   * @see <a href="https://wikipedia.org/wiki/All_Saints%27_Day">Wikipedia</a>
+   * @see <a href="https://www.timeanddate.com/holidays/common/all-saints-day">timeanddate.com</a>
    */
   ALL_SAINTS_DAY(new MonthDayHoliday(MonthDay.of(NOVEMBER, 1))),
 
   /**
-   * The Feast of the Ascension of Jesus Christ, also called Ascension Day, Ascension Thursday, or
-   * sometimes Holy Thursday, commemorates the Christian belief of the bodily Ascension of Jesus
-   * into heaven.
+   * Ascension Day is the 40th day of Easter. It occurs 39 days after Easter Sunday. It is a
+   * Christian holiday that commemorates Jesus Christ's ascension into heaven, according to
+   * Christian belief.
    *
-   * @see <a href="https://wikipedia.org/wiki/Feast_of_the_Ascension">Wikipedia</a>
+   * @see <a href="https://www.timeanddate.com/holidays/common/ascension-day">timeanddate.com</a>
    */
   ASCENSION_DAY(new RelativeHoliday(WesternEasterHoliday.INSTANCE, 39)),
 
