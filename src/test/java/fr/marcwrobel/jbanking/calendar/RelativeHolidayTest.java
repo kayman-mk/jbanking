@@ -3,12 +3,13 @@ package fr.marcwrobel.jbanking.calendar;
 import static java.time.Month.DECEMBER;
 import static java.time.Month.JANUARY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.MonthDay;
-import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -16,13 +17,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class RelativeHolidayTest {
 
   private static final int YEAR = 2020;
-  private static final int MONTH = 6;
+  private static final Month MONTH = Month.JUNE;
   private static final int DAY = 15;
   private static final int SHIFT = 1;
-
-  private static final LocalDate HOLIDAY_2020 = LocalDate.of(YEAR, MONTH, DAY).plusDays(SHIFT);
-  private static final LocalDate HOLIDAY_2019 = HOLIDAY_2020.minusYears(1);
-  private static final LocalDate HOLIDAY_2021 = HOLIDAY_2020.plusYears(1);
 
   private static final Holiday BASE = new MonthDayHoliday(MonthDay.of(MONTH, DAY));
   private static final RelativeHoliday HOLIDAY = new RelativeHoliday(BASE, SHIFT);
@@ -35,16 +32,6 @@ public class RelativeHolidayTest {
   @Test
   public void checkDoesNotAcceptNull() {
     assertThrows(NullPointerException.class, () -> HOLIDAY.check(null));
-  }
-
-  @Test
-  public void nextDoesNotAcceptNull() {
-    assertThrows(NullPointerException.class, () -> HOLIDAY.next(null));
-  }
-
-  @Test
-  public void previousDoesNotAcceptNull() {
-    assertThrows(NullPointerException.class, () -> HOLIDAY.next(null));
   }
 
   @ParameterizedTest
@@ -69,68 +56,26 @@ public class RelativeHolidayTest {
   }
 
   @Test
-  public void previousCalculationWithDateBefore() {
-    Optional<LocalDate> previous = HOLIDAY.previous(HOLIDAY_2020.minusDays(1));
-
-    assertTrue(previous.isPresent());
-    assertTrue(HOLIDAY.check(previous.get()));
-    assertEquals(HOLIDAY_2019, previous.get());
-  }
-
-  @Test
-  public void previousCalculationWithDatesEquals() {
-    Optional<LocalDate> previous = HOLIDAY.previous(HOLIDAY_2020);
-
-    assertTrue(previous.isPresent());
-    assertTrue(HOLIDAY.check(previous.get()));
-    assertEquals(HOLIDAY_2019, previous.get());
-  }
-
-  @Test
-  public void previousCalculationWithDateAfter() {
-    Optional<LocalDate> previous = HOLIDAY.previous(HOLIDAY_2020.plusDays(1));
-
-    assertTrue(previous.isPresent());
-    assertTrue(HOLIDAY.check(previous.get()));
-    assertEquals(HOLIDAY_2020, previous.get());
-  }
-
-  @Test
-  public void nextCalculationWithDateBefore() {
-    Optional<LocalDate> next = HOLIDAY.next(HOLIDAY_2020.minusDays(1));
-
-    assertTrue(next.isPresent());
-    assertTrue(HOLIDAY.check(next.get()));
-    assertEquals(HOLIDAY_2020, next.get());
-  }
-
-  @Test
-  public void nextCalculationWithDatesEquals() {
-    Optional<LocalDate> next = HOLIDAY.next(HOLIDAY_2020);
-
-    assertTrue(next.isPresent());
-    assertTrue(HOLIDAY.check(next.get()));
-    assertEquals(HOLIDAY_2021, next.get());
-  }
-
-  @Test
-  public void nextCalculationWithDateAfter() {
-    Optional<LocalDate> next = HOLIDAY.next(HOLIDAY_2020.plusDays(1));
-
-    assertTrue(next.isPresent());
-    assertTrue(HOLIDAY.check(next.get()));
-    assertEquals(HOLIDAY_2021, next.get());
-  }
-
-  @Test
   public void equalsAndHashCodeAndToString() {
-    RelativeHoliday holiday1 = new RelativeHoliday(BASE, SHIFT);
-    RelativeHoliday holiday2 = new RelativeHoliday(BASE, SHIFT);
+    Holiday holiday1 = new RelativeHoliday(BASE, SHIFT);
+    Holiday holiday2 = new RelativeHoliday(BASE, SHIFT);
+    Holiday holiday3 = new RelativeHoliday(BASE, SHIFT + 1);
+    Holiday holiday4 = new RelativeHoliday(new MonthDayHoliday(MonthDay.of(MONTH, DAY + 1)), SHIFT);
 
     assertEquals(holiday1, holiday2);
     assertEquals(holiday2, holiday1);
     assertEquals(holiday1, holiday1);
     assertEquals(holiday1.hashCode(), holiday2.hashCode());
     assertEquals(holiday1.toString(), holiday2.toString());
+
+    assertNotEquals(holiday1, holiday3);
+    assertNotEquals(holiday3, holiday1);
+    assertNotEquals(holiday1.hashCode(), holiday3.hashCode());
+    assertNotEquals(holiday1.toString(), holiday3.toString());
+
+    assertNotEquals(holiday1, holiday4);
+    assertNotEquals(holiday4, holiday1);
+    assertNotEquals(holiday1.hashCode(), holiday4.hashCode());
+    assertNotEquals(holiday1.toString(), holiday4.toString());
   }
 }

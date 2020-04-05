@@ -8,7 +8,6 @@ import java.time.Month;
 import java.time.MonthDay;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * A {@link Holiday} occurring the same day of week in month every year.
@@ -17,7 +16,7 @@ import java.util.Optional;
  * DayOfWeek)} under the hood.
  *
  * <p>This class is useful for modeling holidays like <a
- * href="https://en.wikipedia.org/wiki/Martin_Luther_King_Jr._Day">Martin Luther King Jr. Day</a>.
+ * href="https://wikipedia.org/wiki/Martin_Luther_King_Jr._Day">Martin Luther King Jr. Day</a>.
  *
  * @see TemporalAdjusters#dayOfWeekInMonth(int, DayOfWeek)
  */
@@ -50,36 +49,6 @@ public final class DayOfWeekInMonthHoliday implements Holiday {
   private LocalDate dateForYear(int year) {
     return LocalDate.of(year, month, 1)
         .with(TemporalAdjusters.dayOfWeekInMonth(weekNumber, dayOfWeek));
-  }
-
-  /** @see Holiday#previous(LocalDate) */
-  @Override
-  public Optional<LocalDate> previous(LocalDate from) {
-    LocalDate dateForYear = dateForYear(from.getYear());
-
-    LocalDate result;
-    if (from.isAfter(dateForYear)) {
-      result = dateForYear;
-    } else {
-      result = dateForYear(from.getYear() - 1);
-    }
-
-    return Optional.of(result);
-  }
-
-  /** @see Holiday#next(LocalDate) */
-  @Override
-  public Optional<LocalDate> next(LocalDate from) {
-    LocalDate dateForYear = dateForYear(from.getYear());
-
-    LocalDate result;
-    if (from.isBefore(dateForYear)) {
-      result = dateForYear;
-    } else {
-      result = dateForYear(from.getYear() + 1);
-    }
-
-    return Optional.of(result);
   }
 
   @Override

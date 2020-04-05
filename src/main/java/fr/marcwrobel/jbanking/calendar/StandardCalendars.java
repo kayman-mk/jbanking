@@ -1,7 +1,6 @@
 package fr.marcwrobel.jbanking.calendar;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -9,23 +8,43 @@ import java.util.Set;
 public enum StandardCalendars implements Calendar {
 
   /**
-   * Long-term calendar for Trans-European Automated Real-time Gross settlement Express Transfer
-   * (TARGET) closing days, as described on <a
+   * Long-term calendar for <a
+   * href="https://www.ecb.europa.eu/paym/target/target2/html/index.en.html">Trans-European
+   * Automated Real-time Gross settlement Express Transfer (TARGET)</a> closing days, as described
+   * on <a
    * href="https://www.ecb.europa.eu/press/pr/date/2000/html/pr001214_4.en.html">ecb.europa.eu</a>.
    *
    * <p>This calendar is valid from 2002 until further notice.
    */
-  TARGET(
+  TARGET2(
       new ConfigurableCalendar(
-          Arrays.asList(
-              StandardsHolidays.SATURDAY,
-              StandardsHolidays.SUNDAY,
-              StandardsHolidays.NEW_YEAR_DAY,
-              StandardsHolidays.WESTERN_GOOD_FRIDAY,
-              StandardsHolidays.WESTERN_EASTER_MONDAY,
-              StandardsHolidays.LABOUR_DAY,
-              StandardsHolidays.CHRISTMAS,
-              StandardsHolidays.WESTERN_SAINT_STEPHENS_DAY)));
+          DayOfWeekHoliday.SATURDAY,
+          DayOfWeekHoliday.SUNDAY,
+          WorldEventHolidays.NEW_YEAR_DAY,
+          WesternChristianHolidays.GOOD_FRIDAY,
+          WesternChristianHolidays.EASTER_MONDAY,
+          WorldEventHolidays.INTERNATIONAL_WORKERS_DAY,
+          WesternChristianHolidays.CHRISTMAS,
+          WesternChristianHolidays.SAINT_STEPHENS_DAY)),
+
+  /**
+   * US Federal Reserve Bank Holidays, as described on <a
+   * href="https://www.federalreserve.gov/aboutthefed/k8.htm">federalreserve.gov</a>
+   */
+  US_FEDERAL_RESERVE(
+      new ConfigurableCalendar(
+          DayOfWeekHoliday.SATURDAY,
+          DayOfWeekHoliday.SUNDAY,
+          new ShiftOnWeekendHoliday(WorldEventHolidays.NEW_YEAR_DAY),
+          AmericanHolidays.MARTIN_LUTHER_KING_JR_DAY,
+          AmericanHolidays.WASHINGTONS_BIRTHDAY,
+          AmericanHolidays.MEMORIAL_DAY,
+          new ShiftOnWeekendHoliday(AmericanHolidays.INDEPENDENCE_DAY),
+          AmericanHolidays.LABOR_DAY,
+          AmericanHolidays.COLUMBUS_DAY,
+          new ShiftOnWeekendHoliday(AmericanHolidays.VETERANS_DAY),
+          AmericanHolidays.THANKSGIVING,
+          new ShiftOnWeekendHoliday(WesternChristianHolidays.CHRISTMAS)));
 
   private final ConfigurableCalendar calendar;
 

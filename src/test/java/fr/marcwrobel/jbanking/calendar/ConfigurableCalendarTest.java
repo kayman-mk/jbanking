@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 import java.time.MonthDay;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
@@ -31,16 +31,24 @@ class ConfigurableCalendarTest {
   private static final Holiday SUNDAY_HOLIDAY1 = DayOfWeekHoliday.SUNDAY;
   private static final Holiday SUNDAY_HOLIDAY2 = new MonthDayHoliday(MonthDay.from(SUNDAY));
   private static final Calendar WEEKEND_CALENDAR =
-      new ConfigurableCalendar(asList(SATURDAY_HOLIDAY, SUNDAY_HOLIDAY1, SUNDAY_HOLIDAY2));
+      new ConfigurableCalendar(SATURDAY_HOLIDAY, SUNDAY_HOLIDAY1, SUNDAY_HOLIDAY2);
 
   @Test
   public void holidaysMustNotBeNull() {
-    assertThrows(NullPointerException.class, () -> new ConfigurableCalendar(null));
+    assertThrows(
+        NullPointerException.class, () -> new ConfigurableCalendar((Collection<Holiday>) null));
+  }
+
+  @Test
+  public void oneHolidayMustNotBeNull() {
+    assertThrows(
+        NullPointerException.class,
+        () -> new ConfigurableCalendar(SUNDAY_HOLIDAY1, null, SUNDAY_HOLIDAY2));
   }
 
   @Test
   public void emptyCalendarDateCalculation() {
-    Calendar emptyCalendar = new ConfigurableCalendar(new ArrayList<>());
+    Calendar emptyCalendar = new ConfigurableCalendar();
     LocalDate date = LocalDate.of(2020, 4, 14);
 
     assertTrue(emptyCalendar.isBusinessDay(date));

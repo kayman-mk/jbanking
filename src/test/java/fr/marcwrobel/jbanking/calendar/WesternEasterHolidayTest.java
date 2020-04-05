@@ -10,7 +10,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
-import java.util.Optional;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -34,21 +33,22 @@ class WesternEasterHolidayTest {
     assertThrows(NullPointerException.class, () -> HOLIDAY.check(null));
   }
 
-  @Test
-  public void nextDoesNotAcceptNull() {
-    assertThrows(NullPointerException.class, () -> HOLIDAY.next(null));
-  }
-
-  @Test
-  public void previousDoesNotAcceptNull() {
-    assertThrows(NullPointerException.class, () -> HOLIDAY.next(null));
-  }
-
+  // Data from https://www.census.gov/srd/www/genhol/easter500.html
   @ParameterizedTest
   @MethodSource("easter500")
   public void easter500(int month, int dayOfMonth, int year) {
     LocalDate date = LocalDate.of(year, month, dayOfMonth);
     assertTrue(HOLIDAY.check(date));
+  }
+
+  private static Stream<Arguments> easter500() {
+    InputStream easter500 =
+        WesternEasterHolidayTest.class.getClassLoader().getResourceAsStream("easter500.txt");
+    return new BufferedReader(new InputStreamReader(easter500))
+        .lines()
+        .map(line -> line.trim().replaceAll("\\s+", " "))
+        .map(line -> line.split(" "))
+        .map(Arguments::of);
   }
 
   @Test
@@ -64,72 +64,5 @@ class WesternEasterHolidayTest {
     }
 
     assertEquals(1, count);
-  }
-
-  @Test
-  public void previousCalculationWithDateBefore() {
-    Optional<LocalDate> previous = HOLIDAY.previous(HOLIDAY_2020.minusDays(1));
-
-    assertTrue(previous.isPresent());
-    assertTrue(HOLIDAY.check(previous.get()));
-    assertEquals(HOLIDAY_2019, previous.get());
-  }
-
-  @Test
-  public void previousCalculationWithDatesEquals() {
-    Optional<LocalDate> previous = HOLIDAY.previous(HOLIDAY_2020);
-
-    assertTrue(previous.isPresent());
-    assertTrue(HOLIDAY.check(previous.get()));
-    assertEquals(HOLIDAY_2019, previous.get());
-  }
-
-  @Test
-  public void previousCalculationWithDateAfter() {
-    Optional<LocalDate> previous = HOLIDAY.previous(HOLIDAY_2020.plusDays(1));
-
-    assertTrue(previous.isPresent());
-    assertTrue(HOLIDAY.check(previous.get()));
-    assertEquals(HOLIDAY_2020, previous.get());
-  }
-
-  @Test
-  public void nextCalculationWithDateBefore() {
-    Optional<LocalDate> next = HOLIDAY.next(HOLIDAY_2020.minusDays(1));
-
-    assertTrue(next.isPresent());
-    assertTrue(HOLIDAY.check(next.get()));
-    assertEquals(HOLIDAY_2020, next.get());
-  }
-
-  @Test
-  public void nextCalculationWithDatesEquals() {
-    Optional<LocalDate> next = HOLIDAY.next(HOLIDAY_2020);
-
-    assertTrue(next.isPresent());
-    assertTrue(HOLIDAY.check(next.get()));
-    assertEquals(HOLIDAY_2021, next.get());
-  }
-
-  @Test
-  public void nextCalculationWithDateAfter() {
-    Optional<LocalDate> next = HOLIDAY.next(HOLIDAY_2020.plusDays(1));
-
-    assertTrue(next.isPresent());
-    assertTrue(HOLIDAY.check(next.get()));
-    assertEquals(HOLIDAY_2021, next.get());
-  }
-
-  /*
-   * Easter dates comes from https://www.census.gov/srd/www/genhol/easter500.html.
-   */
-  private static Stream<Arguments> easter500() {
-    InputStream easter500 =
-        WesternEasterHolidayTest.class.getClassLoader().getResourceAsStream("easter500.txt");
-    return new BufferedReader(new InputStreamReader(easter500))
-        .lines()
-        .map(line -> line.trim().replaceAll("\\s+", " "))
-        .map(line -> line.split(" "))
-        .map(Arguments::of);
   }
 }

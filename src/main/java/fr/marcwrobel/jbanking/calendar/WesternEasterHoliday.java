@@ -1,7 +1,6 @@
 package fr.marcwrobel.jbanking.calendar;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 /**
  * This class is modeling the <a href="https://wikipedia.org/wiki/Easter">western easter sunday</a>.
@@ -9,7 +8,7 @@ import java.util.Optional;
  * <p>The date of Easter Sunday is computed with the Meeus/Jones/Butcher Gregorian algorithm.
  *
  * @see <a
- *     href="http://en.wikipedia.org/wiki/Computus#Meeus.2FJones.2FButcher_Gregorian_algorithm">Meeus/Jones/Butcher
+ *     href="http://wikipedia.org/wiki/Computus#Meeus.2FJones.2FButcher_Gregorian_algorithm">Meeus/Jones/Butcher
  *     Gregorian algorithm</a>
  */
 public enum WesternEasterHoliday implements Holiday {
@@ -19,32 +18,6 @@ public enum WesternEasterHoliday implements Holiday {
   @Override
   public boolean check(LocalDate date) {
     return meeusJonesButcherComputus(date.getYear()).equals(date);
-  }
-
-  /** @see Holiday#previous(LocalDate) */
-  @Override
-  public Optional<LocalDate> previous(LocalDate from) {
-    LocalDate easter = meeusJonesButcherComputus(from.getYear());
-
-    LocalDate previous = easter;
-    if (from.equals(easter) || from.isBefore(easter)) {
-      previous = meeusJonesButcherComputus(from.getYear() - 1);
-    }
-
-    return Optional.of(previous);
-  }
-
-  /** @see Holiday#next(LocalDate) */
-  @Override
-  public Optional<LocalDate> next(LocalDate from) {
-    LocalDate easter = meeusJonesButcherComputus(from.getYear());
-
-    LocalDate next = easter;
-    if (from.equals(easter) || from.isAfter(easter)) {
-      next = meeusJonesButcherComputus(from.getYear() + 1);
-    }
-
-    return Optional.of(next);
   }
 
   private static LocalDate meeusJonesButcherComputus(final int year) {

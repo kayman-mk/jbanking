@@ -5,7 +5,6 @@ import static java.util.Objects.requireNonNull;
 import java.time.LocalDate;
 import java.time.MonthDay;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * A {@link Holiday} occurring the same day and month every year.
@@ -30,34 +29,6 @@ public final class MonthDayHoliday implements Holiday {
   @Override
   public boolean check(LocalDate date) {
     return monthDay.equals(MonthDay.from(date));
-  }
-
-  /** @see Holiday#previous(LocalDate) */
-  @Override
-  public Optional<LocalDate> previous(LocalDate from) {
-    LocalDate result;
-
-    if (MonthDay.from(from).isAfter(monthDay)) {
-      result = monthDay.atYear(from.getYear());
-    } else {
-      result = monthDay.atYear(from.getYear() - 1);
-    }
-
-    return Optional.of(result);
-  }
-
-  /** @see Holiday#next(LocalDate) */
-  @Override
-  public Optional<LocalDate> next(LocalDate from) {
-    LocalDate result;
-
-    if (MonthDay.from(from).isBefore(monthDay)) {
-      result = monthDay.atYear(from.getYear());
-    } else {
-      result = monthDay.atYear(from.getYear() + 1);
-    }
-
-    return Optional.of(result);
   }
 
   @Override

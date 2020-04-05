@@ -1,5 +1,9 @@
 package fr.marcwrobel.jbanking.calendar;
 
+import static java.util.Arrays.asList;
+import static java.util.Collections.unmodifiableSet;
+import static java.util.Objects.requireNonNull;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,10 +28,27 @@ public final class ConfigurableCalendar implements Calendar {
    * Creates a new instance using the given bank {@link Holiday}s.
    *
    * @param holidays the {@link Holiday}s that the calendar will be using.
-   * @throws NullPointerException if {@code holidays} is {code null}.
+   * @throws NullPointerException if {@code holidays} is {code null} or if one of the holiday in
+   *     {@code holidays} is {code null}.
    */
   public ConfigurableCalendar(Collection<Holiday> holidays) {
-    this.holidays = Collections.unmodifiableSet(new HashSet<>(holidays));
+    Set<Holiday> copy = new HashSet<>(holidays.size());
+
+    for (Holiday holiday : holidays) {
+      copy.add(requireNonNull(holiday));
+    }
+
+    this.holidays = unmodifiableSet(copy);
+  }
+
+  /**
+   * Creates a new instance using the given bank {@link Holiday}s.
+   *
+   * @param holidays the {@link Holiday}s that the calendar will be using.
+   * @throws NullPointerException if {@code holidays} is {code null}.
+   */
+  public ConfigurableCalendar(Holiday... holidays) {
+    this(asList(holidays));
   }
 
   /** @see Calendar#isHoliday(LocalDate) */
@@ -53,7 +74,7 @@ public final class ConfigurableCalendar implements Calendar {
       }
     }
 
-    return Collections.unmodifiableSet(matchingHolidays);
+    return unmodifiableSet(matchingHolidays);
   }
 
   /** @see Calendar#isBusinessDay(LocalDate) */

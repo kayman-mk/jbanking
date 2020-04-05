@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 import java.time.MonthDay;
-import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -18,10 +17,6 @@ class MonthDayHolidayTest {
   private static final int YEAR = 2020;
   private static final int MONTH = 6;
   private static final int DAY = 15;
-
-  private static final LocalDate HOLIDAY_2020 = LocalDate.of(YEAR, MONTH, DAY);
-  private static final LocalDate HOLIDAY_2019 = HOLIDAY_2020.minusYears(1);
-  private static final LocalDate HOLIDAY_2021 = HOLIDAY_2020.plusYears(1);
 
   private static final MonthDayHoliday HOLIDAY = new MonthDayHoliday(MonthDay.of(MONTH, DAY));
 
@@ -33,16 +28,6 @@ class MonthDayHolidayTest {
   @Test
   public void checkDoesNotAcceptNull() {
     assertThrows(NullPointerException.class, () -> HOLIDAY.check(null));
-  }
-
-  @Test
-  public void nextDoesNotAcceptNull() {
-    assertThrows(NullPointerException.class, () -> HOLIDAY.next(null));
-  }
-
-  @Test
-  public void previousDoesNotAcceptNull() {
-    assertThrows(NullPointerException.class, () -> HOLIDAY.next(null));
   }
 
   @ParameterizedTest
@@ -64,60 +49,6 @@ class MonthDayHolidayTest {
     }
 
     assertEquals(1, count);
-  }
-
-  @Test
-  public void previousCalculationWithDateBefore() {
-    Optional<LocalDate> previous = HOLIDAY.previous(HOLIDAY_2020.minusDays(1));
-
-    assertTrue(previous.isPresent());
-    assertTrue(HOLIDAY.check(previous.get()));
-    assertEquals(HOLIDAY_2019, previous.get());
-  }
-
-  @Test
-  public void previousCalculationWithDatesEquals() {
-    Optional<LocalDate> previous = HOLIDAY.previous(HOLIDAY_2020);
-
-    assertTrue(previous.isPresent());
-    assertTrue(HOLIDAY.check(previous.get()));
-    assertEquals(HOLIDAY_2019, previous.get());
-  }
-
-  @Test
-  public void previousCalculationWithDateAfter() {
-    Optional<LocalDate> previous = HOLIDAY.previous(HOLIDAY_2020.plusDays(1));
-
-    assertTrue(previous.isPresent());
-    assertTrue(HOLIDAY.check(previous.get()));
-    assertEquals(HOLIDAY_2020, previous.get());
-  }
-
-  @Test
-  public void nextCalculationWithDateBefore() {
-    Optional<LocalDate> next = HOLIDAY.next(HOLIDAY_2020.minusDays(1));
-
-    assertTrue(next.isPresent());
-    assertTrue(HOLIDAY.check(next.get()));
-    assertEquals(HOLIDAY_2020, next.get());
-  }
-
-  @Test
-  public void nextCalculationWithDatesEquals() {
-    Optional<LocalDate> next = HOLIDAY.next(HOLIDAY_2020);
-
-    assertTrue(next.isPresent());
-    assertTrue(HOLIDAY.check(next.get()));
-    assertEquals(HOLIDAY_2021, next.get());
-  }
-
-  @Test
-  public void nextCalculationWithDateAfter() {
-    Optional<LocalDate> next = HOLIDAY.next(HOLIDAY_2020.plusDays(1));
-
-    assertTrue(next.isPresent());
-    assertTrue(HOLIDAY.check(next.get()));
-    assertEquals(HOLIDAY_2021, next.get());
   }
 
   @Test

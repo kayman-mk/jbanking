@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.Optional;
 
 /**
  * A {@link Holiday} occurring the same day every week.
@@ -12,12 +11,58 @@ import java.util.Optional;
  * <p>This class is useful for modeling saturday and sunday.
  */
 public enum DayOfWeekHoliday implements Holiday {
+  /**
+   * Monday is the day of the week between Sunday and Tuesday. It seems it is never a weekend day.
+   *
+   * @see <a href="https://wikipedia.org/wiki/Monday">Wikipedia</a>
+   */
   MONDAY(DayOfWeek.MONDAY),
+
+  /**
+   * Tuesday is the day of the week between Monday and Wednesday. It seems it is never a weekend
+   * day.
+   *
+   * @see <a href="https://wikipedia.org/wiki/Tuesday">Wikipedia</a>
+   */
   TUESDAY(DayOfWeek.TUESDAY),
+
+  /**
+   * Wednesday is the day of the week between Tuesday and Thursday. It seems it is never a weekend
+   * day.
+   *
+   * @see <a href="https://wikipedia.org/wiki/Wednesday">Wikipedia</a>
+   */
   WEDNESDAY(DayOfWeek.WEDNESDAY),
+
+  /**
+   * Thursday is the day of the week between Wednesday and Friday. It seems is never a weekend day.
+   *
+   * @see <a href="https://wikipedia.org/wiki/Thursday">Wikipedia</a>
+   */
   THURSDAY(DayOfWeek.THURSDAY),
+
+  /**
+   * Friday is the day of the week between Thursday and Saturday. Friday is the first day of the
+   * weekend in some countries, with Saturday the second.
+   *
+   * @see <a href="https://wikipedia.org/wiki/Friday">Wikipedia</a>
+   */
   FRIDAY(DayOfWeek.FRIDAY),
+
+  /**
+   * Saturday is the day of the week between Friday and Sunday. In most countries, Saturday is a
+   * weekend day.
+   *
+   * @see <a href="https://wikipedia.org/wiki/Saturday">Wikipedia</a>
+   */
   SATURDAY(DayOfWeek.SATURDAY),
+
+  /**
+   * Sunday is the day of the week between Saturday and Monday. Sunday is a day of rest in most
+   * Western countries, as a part of the weekend.
+   *
+   * @see <a href="https://wikipedia.org/wiki/Sunday">Wikipedia</a>
+   */
   SUNDAY(DayOfWeek.SUNDAY);
 
   private final DayOfWeek dayOfWeek;
@@ -30,33 +75,5 @@ public enum DayOfWeekHoliday implements Holiday {
   @Override
   public boolean check(LocalDate date) {
     return dayOfWeek.equals(DayOfWeek.from(date));
-  }
-
-  /** @see Holiday#previous(LocalDate) */
-  @Override
-  public Optional<LocalDate> previous(LocalDate from) {
-    LocalDate result;
-
-    if (from.getDayOfWeek().getValue() > dayOfWeek.getValue()) {
-      result = from.with(dayOfWeek);
-    } else {
-      result = from.minusWeeks(1).with(dayOfWeek);
-    }
-
-    return Optional.of(result);
-  }
-
-  /** @see Holiday#next(LocalDate) */
-  @Override
-  public Optional<LocalDate> next(LocalDate from) {
-    LocalDate result;
-
-    if (from.getDayOfWeek().getValue() < dayOfWeek.getValue()) {
-      result = from.with(dayOfWeek);
-    } else {
-      result = from.plusWeeks(1).with(dayOfWeek);
-    }
-
-    return Optional.of(result);
   }
 }
