@@ -20,7 +20,7 @@ public final class MonthDayHoliday implements Holiday {
    * Create a new holiday using the given {@link MonthDay}
    *
    * @param monthDay a non-null {@link MonthDay}
-   * @throws NullPointerException if the given {@link MonthDay} is <code>null</code>
+   * @throws NullPointerException if the given {@link MonthDay} is {@code null}
    */
   public MonthDayHoliday(MonthDay monthDay) {
     this.monthDay = requireNonNull(monthDay);

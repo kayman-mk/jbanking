@@ -6,28 +6,37 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.MonthDay;
+import java.time.Month;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class MonthDayHolidayTest {
+class DayOfWeekInMonthHolidayTest {
 
-  private static final int YEAR = 2020;
-  private static final int MONTH = 6;
-  private static final int DAY = 15;
+  private static final int WEEK_NUMBER = 3;
+  private static final DayOfWeek DAY_OF_WEEK = DayOfWeek.WEDNESDAY;
+  private static final Month MONTH = Month.JANUARY;
 
-  private static final LocalDate HOLIDAY_2020 = LocalDate.of(YEAR, MONTH, DAY);
-  private static final LocalDate HOLIDAY_2019 = HOLIDAY_2020.minusYears(1);
-  private static final LocalDate HOLIDAY_2021 = HOLIDAY_2020.plusYears(1);
+  private static final LocalDate HOLIDAY_2020 = LocalDate.of(2020, MONTH, 15);
+  private static final LocalDate HOLIDAY_2019 = LocalDate.of(2019, MONTH, 16);;
+  private static final LocalDate HOLIDAY_2021 = LocalDate.of(2021, MONTH, 20);
 
-  private static final MonthDayHoliday HOLIDAY = new MonthDayHoliday(MonthDay.of(MONTH, DAY));
+  private static final DayOfWeekInMonthHoliday HOLIDAY =
+      new DayOfWeekInMonthHoliday(WEEK_NUMBER, DAY_OF_WEEK, MONTH);
 
   @Test
-  public void monthDayCannotBeNull() {
-    assertThrows(NullPointerException.class, () -> new MonthDayHoliday(null));
+  public void dayOfWeekCannotBeNull() {
+    assertThrows(
+        NullPointerException.class, () -> new DayOfWeekInMonthHoliday(0, null, Month.MARCH));
+  }
+
+  @Test
+  public void monthCannotBeNull() {
+    assertThrows(
+        NullPointerException.class, () -> new DayOfWeekInMonthHoliday(0, DayOfWeek.MONDAY, null));
   }
 
   @Test
@@ -46,14 +55,28 @@ class MonthDayHolidayTest {
   }
 
   @ParameterizedTest
-  @ValueSource(ints = {1, 100, 1970, YEAR, 2050, 10000})
-  public void holidayCheckSucceed(int year) {
-    assertTrue(HOLIDAY.check(LocalDate.of(year, MONTH, DAY)));
+  @ValueSource(
+      strings = {
+        "2010-01-20",
+        "2011-01-19",
+        "2012-01-18",
+        "2013-01-16",
+        "2014-01-15",
+        "2015-01-21",
+        "2016-01-20",
+        "2017-01-18",
+        "2018-01-17",
+        "2019-01-16",
+        "2020-01-15",
+        "2021-01-20"
+      })
+  public void holidayCheckSucceed(String date) {
+    assertTrue(HOLIDAY.check(LocalDate.parse(date)));
   }
 
   @Test
   public void onlyOneHolidayPerYear() {
-    LocalDate start = LocalDate.of(YEAR, JANUARY, 1);
+    LocalDate start = LocalDate.of(2020, JANUARY, 1);
     LocalDate end = LocalDate.of(start.getYear(), DECEMBER, 31);
 
     int count = 0;
@@ -122,8 +145,8 @@ class MonthDayHolidayTest {
 
   @Test
   public void equalsAndHashCodeAndToString() {
-    Holiday holiday1 = new MonthDayHoliday(MonthDay.of(MONTH, DAY));
-    Holiday holiday2 = new MonthDayHoliday(MonthDay.of(MONTH, DAY));
+    Holiday holiday1 = new DayOfWeekInMonthHoliday(WEEK_NUMBER, DAY_OF_WEEK, MONTH);
+    Holiday holiday2 = new DayOfWeekInMonthHoliday(WEEK_NUMBER, DAY_OF_WEEK, MONTH);
 
     assertEquals(holiday1, holiday2);
     assertEquals(holiday2, holiday1);
