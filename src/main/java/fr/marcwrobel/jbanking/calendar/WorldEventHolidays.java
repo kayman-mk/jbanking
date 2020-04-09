@@ -21,6 +21,14 @@ public enum WorldEventHolidays implements Holiday {
   ARMISTICE_DAY(new MonthDayHoliday(MonthDay.of(NOVEMBER, 11))),
 
   /**
+   * The "Europe Day" of the EU was introduced in 1985 by the European Communities (the predecessor
+   * organisation of the EU) The date of commemorates the Schuman Declaration of 9 May 1950.
+   *
+   * @see <a href="https://en.wikipedia.org/wiki/Europe_Day">Wikipedia</a>
+   */
+  EUROPE_DAY(new MonthDayHoliday(MonthDay.of(MAY, 9))),
+
+  /**
    * International Workers' Day, also known as Workers' Day, Labour Day in some countries and often
    * referred to as May Day, is a celebration of labourers and the working classes that is promoted
    * by the international labour movement which occurs every year on May Day (1 May), an ancient

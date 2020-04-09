@@ -1,6 +1,7 @@
 package fr.marcwrobel.jbanking.calendar;
 
 import java.time.LocalDate;
+import java.time.temporal.ValueRange;
 import java.util.List;
 import java.util.Set;
 
@@ -70,7 +71,28 @@ public enum StandardCalendars implements Calendar {
           WesternChristianHolidays.ASCENSION_DAY,
           WesternChristianHolidays.PENTECOST_MONDAY,
           GermanHolidays.GERMAN_UNITY_DAY,
-          new PunctualHoliday(GermanHolidays.REFORMATION_DAY, 2017),
+          new YearRangeHoliday(GermanHolidays.REFORMATION_DAY, ValueRange.of(2017, 2017)),
+          WesternChristianHolidays.CHRISTMAS,
+          WesternChristianHolidays.SAINT_STEPHENS_DAY)),
+
+  /**
+   * French national holidays calendar.
+   *
+   * @see <a href="https://www.timeanddate.com/holidays/luxembourg/?hol=1">timeanddate.com</a>
+   */
+  LUXEMBOURGER_NATIONAL_HOLIDAYS(
+      new ConfigurableCalendar(
+          DayOfWeekHoliday.SATURDAY,
+          DayOfWeekHoliday.SUNDAY,
+          WorldEventHolidays.NEW_YEAR_DAY,
+          WesternChristianHolidays.EASTER_MONDAY,
+          WorldEventHolidays.INTERNATIONAL_WORKERS_DAY,
+          LuxembourgerHolidays.EUROPE_DAY,
+          WesternChristianHolidays.ASCENSION_DAY,
+          WesternChristianHolidays.PENTECOST_MONDAY,
+          LuxembourgerHolidays.NATIONAL_DAY,
+          WesternChristianHolidays.ASSUMPTION_OF_MARY,
+          WesternChristianHolidays.ALL_SAINTS_DAY,
           WesternChristianHolidays.CHRISTMAS,
           WesternChristianHolidays.SAINT_STEPHENS_DAY)),
 
