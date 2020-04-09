@@ -17,6 +17,23 @@ class GermanOfficialHolidaysCalendarTest extends CalendarTestSupport {
     super(StandardCalendars.GERMAN_OFFICIAL_HOLIDAYS);
   }
 
+  // https://www.timeanddate.com/holidays/germany/2017?hol=1
+  @Test
+  public void year2017() {
+    check(
+        2017,
+        of(JANUARY, 1),
+        of(APRIL, 14),
+        of(APRIL, 17),
+        of(MAY, 1),
+        of(MAY, 25),
+        of(JUNE, 5),
+        of(OCTOBER, 3),
+        of(OCTOBER, 31),
+        of(DECEMBER, 25),
+        of(DECEMBER, 26));
+  }
+
   // https://www.timeanddate.com/holidays/germany/2018?hol=1
   @Test
   public void year2018() {

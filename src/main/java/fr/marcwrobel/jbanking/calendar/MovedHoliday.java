@@ -25,6 +25,7 @@ public final class MovedHoliday implements Holiday {
    *
    * @param base a non-null holiday to use as a base.
    * @param replacements replacements, expressed as key / value
+   * @throws NullPointerException if <code>base</code> is null
    */
   public MovedHoliday(Holiday base, LocalDate... replacements) {
     this.base = requireNonNull(base);

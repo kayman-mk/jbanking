@@ -23,7 +23,7 @@ public enum StandardCalendars implements Calendar {
           WesternChristianHolidays.ASCENSION_DAY,
           WesternChristianHolidays.PENTECOST,
           WesternChristianHolidays.PENTECOST_MONDAY,
-          NationalHolidays.BELGIAN_NATIONAL_DAY,
+          BelgianHolidays.BELGIAN_NATIONAL_DAY,
           WesternChristianHolidays.ASSUMPTION_OF_MARY,
           WesternChristianHolidays.ALL_SAINTS_DAY,
           WorldEventHolidays.ARMISTICE_DAY,
@@ -44,7 +44,7 @@ public enum StandardCalendars implements Calendar {
           WorldEventHolidays.VICTORY_IN_EUROPE_DAY,
           WesternChristianHolidays.ASCENSION_DAY,
           WesternChristianHolidays.PENTECOST_MONDAY,
-          NationalHolidays.BASTILLE_DAY,
+          FrenchHolidays.BASTILLE_DAY,
           WesternChristianHolidays.ASSUMPTION_OF_MARY,
           WesternChristianHolidays.ALL_SAINTS_DAY,
           WorldEventHolidays.ARMISTICE_DAY,
@@ -52,6 +52,10 @@ public enum StandardCalendars implements Calendar {
 
   /**
    * German official holidays calendar.
+   *
+   * <p>Note that 2017 was the 500th anniversary of the act by Martin Luther which stated the
+   * Reformation. In Germany, the 31st of October was a national holiday that year. More on <a
+   * href="https://www.bbc.com/news/world-europe-41817418">this bbc.com article</a>.
    *
    * @see <a href="https://www.timeanddate.com/holidays/germany/?hol=1">timeanddate.com</a>
    */
@@ -65,7 +69,8 @@ public enum StandardCalendars implements Calendar {
           WorldEventHolidays.INTERNATIONAL_WORKERS_DAY,
           WesternChristianHolidays.ASCENSION_DAY,
           WesternChristianHolidays.PENTECOST_MONDAY,
-          NationalHolidays.GERMAN_UNITY_DAY,
+          GermanHolidays.GERMAN_UNITY_DAY,
+          new PunctualHoliday(GermanHolidays.REFORMATION_DAY, 2017),
           WesternChristianHolidays.CHRISTMAS,
           WesternChristianHolidays.SAINT_STEPHENS_DAY)),
 
