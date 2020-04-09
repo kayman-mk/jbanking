@@ -2,6 +2,7 @@ package fr.marcwrobel.jbanking.calendar;
 
 import static java.time.Month.AUGUST;
 import static java.time.Month.DECEMBER;
+import static java.time.Month.JANUARY;
 import static java.time.Month.NOVEMBER;
 
 import java.time.LocalDate;
@@ -76,6 +77,29 @@ public enum WesternChristianHolidays implements Holiday {
    * @see <a href="https://wikipedia.org/wiki/Easter_Monday">Wikipedia</a>
    */
   EASTER_MONDAY(new RelativeHoliday(WesternEaster.INSTANCE, 1)),
+
+  /**
+   * Epiphany is a Christian feast day that celebrates the revelation (theophany) of God incarnate
+   * as Jesus Christ. In Western Christianity, the feast commemorates principally (but not solely)
+   * the visit of the Magi to the Christ Child, and thus Jesus' physical manifestation to the
+   * Gentiles. It is sometimes called Three Kings' Day, and in some traditions celebrated as Little
+   * Christmas. Moreover, the feast of the Epiphany, in some denominations, also initiates the
+   * liturgical season of Epiphanytide.
+   *
+   * @see <a href="https://en.wikipedia.org/wiki/Epiphany_(holiday)">Wikipedia</a>
+   */
+  EPIPHANY(new MonthDayHoliday(MonthDay.of(JANUARY, 6))),
+
+  /**
+   * The Solemnity of the Immaculate Conception celebrates the solemn celebration of belief in the
+   * Immaculate Conception of the Virgin Mary. It is universally celebrated on December 8, nine
+   * months before the feast of the Nativity of Mary, which is celebrated on September 8. The
+   * Immaculate Conception is one of the most important Marian feasts in the liturgical calendar of
+   * the Roman Catholic Church, and is celebrated worldwide.
+   *
+   * @see <a href="https://en.wikipedia.org/wiki/Feast_of_the_Immaculate_Conception">Wikipedia</a>
+   */
+  FEAST_OF_THE_IMMACULATE_CONCEPTION(new MonthDayHoliday(MonthDay.of(DECEMBER, 8))),
 
   /**
    * Good Friday is a Christian holiday commemorating the crucifixion of Jesus and his death at

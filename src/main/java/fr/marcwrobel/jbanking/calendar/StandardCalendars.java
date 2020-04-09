@@ -76,7 +76,28 @@ public enum StandardCalendars implements Calendar {
           WesternChristianHolidays.SAINT_STEPHENS_DAY)),
 
   /**
-   * French national holidays calendar.
+   * Italian national holidays calendar.
+   *
+   * @see <a href="https://www.timeanddate.com/holidays/italy/?hol=1">timeanddate.com</a>
+   */
+  ITALIAN_NATIONAL_HOLIDAYS(
+      new ConfigurableCalendar(
+          DayOfWeekHoliday.SATURDAY,
+          DayOfWeekHoliday.SUNDAY,
+          WorldEventHolidays.NEW_YEAR_DAY,
+          WesternChristianHolidays.EPIPHANY,
+          WesternChristianHolidays.EASTER_MONDAY,
+          ItalianHolidays.LIBERATION_DAY,
+          WorldEventHolidays.INTERNATIONAL_WORKERS_DAY,
+          ItalianHolidays.REPUBLIC_DAY,
+          WesternChristianHolidays.ASSUMPTION_OF_MARY,
+          WesternChristianHolidays.ALL_SAINTS_DAY,
+          WesternChristianHolidays.FEAST_OF_THE_IMMACULATE_CONCEPTION,
+          WesternChristianHolidays.CHRISTMAS,
+          WesternChristianHolidays.SAINT_STEPHENS_DAY)),
+
+  /**
+   * Luxembourger national holidays calendar.
    *
    * @see <a href="https://www.timeanddate.com/holidays/luxembourg/?hol=1">timeanddate.com</a>
    */
