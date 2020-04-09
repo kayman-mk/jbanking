@@ -1,5 +1,6 @@
 package fr.marcwrobel.jbanking.calendar;
 
+import static fr.marcwrobel.jbanking.calendar.ShiftingStrategy.CLOSEST_WEEKDAY;
 import static java.time.Month.FEBRUARY;
 import static java.time.Month.JANUARY;
 import static java.time.Month.JULY;
@@ -21,7 +22,7 @@ public enum AmericanHolidays implements Holiday {
    *
    * @see <a href="https://www.timeanddate.com/holidays/us/christmas-day">timeanddate.com</a>
    */
-  CHRISTMAS(new ObservedOnWeekdayHoliday(WesternChristianHolidays.CHRISTMAS)),
+  CHRISTMAS(new ShiftedHoliday(WesternChristianHolidays.CHRISTMAS, CLOSEST_WEEKDAY)),
 
   /**
    * Columbus Day, which is on the second Monday of October, remembers Christopher Columbus' arrival
@@ -38,7 +39,7 @@ public enum AmericanHolidays implements Holiday {
    *
    * @see <a href="https://www.timeanddate.com/holidays/us/independence-day">timeanddate.com</a>
    */
-  INDEPENDENCE_DAY(new ObservedOnWeekdayHoliday(new MonthDayHoliday(MonthDay.of(JULY, 4)))),
+  INDEPENDENCE_DAY(new ShiftedHoliday(new MonthDayHoliday(MonthDay.of(JULY, 4)), CLOSEST_WEEKDAY)),
 
   /**
    * Labor Day is on the first Monday of September every year. It was originally organized to
@@ -72,7 +73,7 @@ public enum AmericanHolidays implements Holiday {
    *
    * @see <a href="https://www.timeanddate.com/holidays/us/new-year-day">timeanddate.com</a>
    */
-  NEW_YEAR_DAY(new ObservedOnWeekdayHoliday(WorldEventHolidays.NEW_YEAR_DAY)),
+  NEW_YEAR_DAY(new ShiftedHoliday(WorldEventHolidays.NEW_YEAR_DAY, CLOSEST_WEEKDAY)),
 
   /**
    * Presidents' Day, also known as Washington's Birthday, is a federal holiday held on the third
@@ -91,7 +92,7 @@ public enum AmericanHolidays implements Holiday {
    *
    * @see <a href="https://www.timeanddate.com/holidays/us/veterans-day">timeanddate.com</a>
    */
-  VETERANS_DAY(new ObservedOnWeekdayHoliday(WorldEventHolidays.ARMISTICE_DAY)),
+  VETERANS_DAY(new ShiftedHoliday(WorldEventHolidays.ARMISTICE_DAY, CLOSEST_WEEKDAY)),
 
   /**
    * Thanksgiving is a federal holiday in the United States, celebrated on the fourth Thursday of

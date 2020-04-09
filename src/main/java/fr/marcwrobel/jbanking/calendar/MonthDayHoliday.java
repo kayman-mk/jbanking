@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * A {@link Holiday} occurring the same day and month every year.
  *
- * <p>This class is useful for modeling holidays like christmas.
+ * <p>This class is modeling holidays like christmas.
  */
 public final class MonthDayHoliday implements Holiday {
 

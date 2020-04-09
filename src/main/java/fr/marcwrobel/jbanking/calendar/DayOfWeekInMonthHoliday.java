@@ -15,7 +15,7 @@ import java.util.Objects;
  * <p>This class is using {@link java.time.temporal.TemporalAdjusters#dayOfWeekInMonth(int,
  * DayOfWeek)} under the hood.
  *
- * <p>This class is useful for modeling holidays like <a
+ * <p>This class is modeling holidays like <a
  * href="https://wikipedia.org/wiki/Martin_Luther_King_Jr._Day">Martin Luther King Jr. Day</a>.
  *
  * @see TemporalAdjusters#dayOfWeekInMonth(int, DayOfWeek)

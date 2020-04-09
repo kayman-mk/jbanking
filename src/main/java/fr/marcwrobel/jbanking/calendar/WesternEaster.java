@@ -11,7 +11,7 @@ import java.time.LocalDate;
  *     href="http://wikipedia.org/wiki/Computus#Meeus.2FJones.2FButcher_Gregorian_algorithm">Meeus/Jones/Butcher
  *     Gregorian algorithm</a>
  */
-public enum WesternEasterHoliday implements Holiday {
+public enum WesternEaster implements Holiday {
   INSTANCE;
 
   /** @see Holiday#check(LocalDate) */

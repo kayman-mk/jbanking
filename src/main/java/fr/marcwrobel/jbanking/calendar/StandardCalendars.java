@@ -8,6 +8,28 @@ import java.util.Set;
 public enum StandardCalendars implements Calendar {
 
   /**
+   * Belgian national holidays calendar.
+   *
+   * @see <a href="https://www.timeanddate.com/holidays/belgium/?hol=1">timeanddate.com</a>
+   */
+  BELGIAN_NATIONAL_HOLIDAYS(
+      new ConfigurableCalendar(
+          DayOfWeekHoliday.SATURDAY,
+          DayOfWeekHoliday.SUNDAY,
+          WorldEventHolidays.NEW_YEAR_DAY,
+          WesternChristianHolidays.EASTER,
+          WesternChristianHolidays.EASTER_MONDAY,
+          WorldEventHolidays.INTERNATIONAL_WORKERS_DAY,
+          WesternChristianHolidays.ASCENSION_DAY,
+          WesternChristianHolidays.PENTECOST,
+          WesternChristianHolidays.PENTECOST_MONDAY,
+          NationalHolidays.BELGIAN_NATIONAL_DAY,
+          WesternChristianHolidays.ASSUMPTION_OF_MARY,
+          WesternChristianHolidays.ALL_SAINTS_DAY,
+          WorldEventHolidays.ARMISTICE_DAY,
+          WesternChristianHolidays.CHRISTMAS)),
+
+  /**
    * French national holidays calendar.
    *
    * @see <a href="https://www.timeanddate.com/holidays/france/?hol=1">timeanddate.com</a>
@@ -21,7 +43,7 @@ public enum StandardCalendars implements Calendar {
           WorldEventHolidays.INTERNATIONAL_WORKERS_DAY,
           WorldEventHolidays.VICTORY_IN_EUROPE_DAY,
           WesternChristianHolidays.ASCENSION_DAY,
-          WesternChristianHolidays.WHIT_MONDAY,
+          WesternChristianHolidays.PENTECOST_MONDAY,
           NationalHolidays.BASTILLE_DAY,
           WesternChristianHolidays.ASSUMPTION_OF_MARY,
           WesternChristianHolidays.ALL_SAINTS_DAY,
@@ -42,7 +64,7 @@ public enum StandardCalendars implements Calendar {
           WesternChristianHolidays.EASTER_MONDAY,
           WorldEventHolidays.INTERNATIONAL_WORKERS_DAY,
           WesternChristianHolidays.ASCENSION_DAY,
-          WesternChristianHolidays.WHIT_MONDAY,
+          WesternChristianHolidays.PENTECOST_MONDAY,
           NationalHolidays.GERMAN_UNITY_DAY,
           WesternChristianHolidays.CHRISTMAS,
           WesternChristianHolidays.SAINT_STEPHENS_DAY)),
@@ -56,7 +78,7 @@ public enum StandardCalendars implements Calendar {
    *
    * <p>This calendar is valid from 2002 until further notice.
    */
-  TARGET2(
+  TARGET2_CLOSING_DAYS(
       new ConfigurableCalendar(
           DayOfWeekHoliday.SATURDAY,
           DayOfWeekHoliday.SUNDAY,
@@ -66,6 +88,22 @@ public enum StandardCalendars implements Calendar {
           WorldEventHolidays.INTERNATIONAL_WORKERS_DAY,
           WesternChristianHolidays.CHRISTMAS,
           WesternChristianHolidays.SAINT_STEPHENS_DAY)),
+
+  /**
+   * United Kingdom bank holidays calendar.
+   *
+   * @see <a href="https://www.timeanddate.com/holidays/uk/?hol=1">timeanddate.com</a>
+   */
+  UNITED_KINGDOM_BANK_HOLIDAYS(
+      new ConfigurableCalendar(
+          DayOfWeekHoliday.SATURDAY,
+          DayOfWeekHoliday.SUNDAY,
+          UnitedKingdomHolidays.NEW_YEAR_DAY,
+          WesternChristianHolidays.GOOD_FRIDAY,
+          UnitedKingdomHolidays.MAY_DAY,
+          UnitedKingdomHolidays.SPRING_BANK_HOLIDAY,
+          UnitedKingdomHolidays.CHRISTMAS,
+          UnitedKingdomHolidays.BOXING_DAY)),
 
   /**
    * The US federal holidays calendar.

@@ -1,5 +1,6 @@
 package fr.marcwrobel.jbanking.calendar;
 
+import static fr.marcwrobel.jbanking.calendar.ShiftingStrategy.CLOSEST_WEEKDAY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -12,13 +13,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class ObservedOnWeekdayHolidayTest {
+class ShiftedHolidayTest {
 
   private static final Month MONTH = Month.JULY;
   private static final int DAY = 4;
+  private static final ShiftingStrategy STRATEGY = CLOSEST_WEEKDAY;
 
   private static final MonthDayHoliday BASE = new MonthDayHoliday(MonthDay.of(MONTH, DAY));
-  private static final ObservedOnWeekdayHoliday HOLIDAY = new ObservedOnWeekdayHoliday(BASE);
+  private static final ShiftedHoliday HOLIDAY = new ShiftedHoliday(BASE, STRATEGY);
 
   @Test
   public void baseCannotBeNull() {
@@ -53,10 +55,10 @@ class ObservedOnWeekdayHolidayTest {
 
   @Test
   public void equalsAndHashCodeAndToString() {
-    Holiday holiday1 = new ObservedOnWeekdayHoliday(BASE);
-    Holiday holiday2 = new ObservedOnWeekdayHoliday(BASE);
+    Holiday holiday1 = new ShiftedHoliday(BASE, STRATEGY);
+    Holiday holiday2 = new ShiftedHoliday(BASE, STRATEGY);
     Holiday holiday3 =
-        new ObservedOnWeekdayHoliday(new MonthDayHoliday(MonthDay.of(MONTH, DAY + 1)));
+        new ShiftedHoliday(new MonthDayHoliday(MonthDay.of(MONTH, DAY + 1)), STRATEGY);
 
     assertEquals(holiday1, holiday2);
     assertEquals(holiday2, holiday1);

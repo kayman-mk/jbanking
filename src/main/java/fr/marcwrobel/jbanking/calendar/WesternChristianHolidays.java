@@ -28,7 +28,7 @@ public enum WesternChristianHolidays implements Holiday {
    *
    * @see <a href="https://www.timeanddate.com/holidays/common/ascension-day">timeanddate.com</a>
    */
-  ASCENSION_DAY(new RelativeHoliday(WesternEasterHoliday.INSTANCE, 39)),
+  ASCENSION_DAY(new RelativeHoliday(WesternEaster.INSTANCE, 39)),
 
   /**
    * The Assumption of Mary into Heaven (often shortened to the Assumption) is, according to the
@@ -66,7 +66,7 @@ public enum WesternChristianHolidays implements Holiday {
    *
    * @see <a href="https://wikipedia.org/wiki/Easter">Wikipedia</a>
    */
-  EASTER(WesternEasterHoliday.INSTANCE),
+  EASTER(WesternEaster.INSTANCE),
 
   /**
    * Easter Monday is the day after Easter Sunday and is a holiday in some countries. Easter Monday
@@ -75,7 +75,7 @@ public enum WesternChristianHolidays implements Holiday {
    *
    * @see <a href="https://wikipedia.org/wiki/Easter_Monday">Wikipedia</a>
    */
-  EASTER_MONDAY(new RelativeHoliday(WesternEasterHoliday.INSTANCE, 1)),
+  EASTER_MONDAY(new RelativeHoliday(WesternEaster.INSTANCE, 1)),
 
   /**
    * Good Friday is a Christian holiday commemorating the crucifixion of Jesus and his death at
@@ -85,7 +85,7 @@ public enum WesternChristianHolidays implements Holiday {
    *
    * @see <a href="https://wikipedia.org/wiki/Good_Friday">Wikipedia</a>
    */
-  GOOD_FRIDAY(new RelativeHoliday(WesternEasterHoliday.INSTANCE, -2)),
+  GOOD_FRIDAY(new RelativeHoliday(WesternEaster.INSTANCE, -2)),
 
   /**
    * The Christian holy day of Pentecost, which is celebrated fifty days after Easter Sunday,
@@ -95,7 +95,16 @@ public enum WesternChristianHolidays implements Holiday {
    *
    * @see <a href="https://wikipedia.org/wiki/Pentecost">Wikipedia</a>
    */
-  PENTECOST(new RelativeHoliday(WesternEasterHoliday.INSTANCE, 49)),
+  PENTECOST(new RelativeHoliday(WesternEaster.INSTANCE, 49)),
+
+  /**
+   * Whit Monday or Pentecost Monday (also known as Monday of the Holy Spirit) is the holiday
+   * celebrated the day after Pentecost. In the Catholic Church, it is the Memorial of the Blessed
+   * Virgin Mary, Mother of the Church.
+   *
+   * @see <a href="https://wikipedia.org/wiki/Whit_Monday">Wikipedia</a>
+   */
+  PENTECOST_MONDAY(new RelativeHoliday(WesternEaster.INSTANCE, 50)),
 
   /**
    * Saint Stephen's Day, also called the Feast of Saint Stephen, is a Christian saint's day to
@@ -105,16 +114,7 @@ public enum WesternChristianHolidays implements Holiday {
    * @see <a href="https://wikipedia.org/wiki/Saint_Stephen%27s_Day">Wikipedia</a>
    * @see #BOXING_DAY
    */
-  SAINT_STEPHENS_DAY(new MonthDayHoliday(MonthDay.of(DECEMBER, 26))),
-
-  /**
-   * Whit Monday or Pentecost Monday (also known as Monday of the Holy Spirit) is the holiday
-   * celebrated the day after Pentecost. In the Catholic Church, it is the Memorial of the Blessed
-   * Virgin Mary, Mother of the Church.
-   *
-   * @see <a href="https://wikipedia.org/wiki/Whit_Monday">Wikipedia</a>
-   */
-  WHIT_MONDAY(new RelativeHoliday(WesternEasterHoliday.INSTANCE, 50));
+  SAINT_STEPHENS_DAY(new MonthDayHoliday(MonthDay.of(DECEMBER, 26)));
 
   private final Holiday holiday;
 

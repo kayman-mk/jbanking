@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 class Target2CalendarTest extends CalendarTestSupport {
 
   protected Target2CalendarTest() {
-    super(StandardCalendars.TARGET2);
+    super(StandardCalendars.TARGET2_CLOSING_DAYS);
   }
 
   // https://www.sepaforcorporates.com/single-euro-payments-area/european-sepa-target-closing-days-2017-2018/

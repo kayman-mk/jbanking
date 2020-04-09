@@ -6,10 +6,7 @@ import static java.time.Month.OCTOBER;
 import java.time.LocalDate;
 import java.time.MonthDay;
 
-/**
- * <a href="https://en.wikipedia.org/wiki/National_day">National holidays</a> (if there is no enum
- * for the given countries).
- */
+/** National holidays for countries having no dedicated enum. */
 public enum NationalHolidays implements Holiday {
 
   /**
@@ -19,6 +16,15 @@ public enum NationalHolidays implements Holiday {
    * @see <a href="https://wikipedia.org/wiki/Bastille_Day">Wikipedia</a>
    */
   BASTILLE_DAY(new MonthDayHoliday(MonthDay.of(JULY, 14))),
+
+  /**
+   * Belgian National Day (Dutch: Nationale feestdag van België; French: Fête nationale belge;
+   * German: Belgischer Nationalfeiertag) is the national holiday of Belgium commemorated annually
+   * on 21 July.
+   *
+   * @see <a href="https://en.wikipedia.org/wiki/Belgian_National_Day">Wikipedia</a>
+   */
+  BELGIAN_NATIONAL_DAY(new MonthDayHoliday(MonthDay.of(JULY, 21))),
 
   /**
    * The German Unity Day (German: Tag der Deutschen Einheit) is the National Day of Germany,

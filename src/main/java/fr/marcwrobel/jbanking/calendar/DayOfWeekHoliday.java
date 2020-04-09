@@ -8,7 +8,7 @@ import java.time.LocalDate;
 /**
  * A {@link Holiday} occurring the same day every week.
  *
- * <p>This class is useful for modeling saturday and sunday.
+ * <p>This class is modeling saturday and sunday.
  */
 public enum DayOfWeekHoliday implements Holiday {
   /**

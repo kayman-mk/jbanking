@@ -20,10 +20,6 @@ class DayOfWeekInMonthHolidayTest {
   private static final DayOfWeek DAY_OF_WEEK = DayOfWeek.WEDNESDAY;
   private static final Month MONTH = Month.JANUARY;
 
-  private static final LocalDate HOLIDAY_2020 = LocalDate.of(2020, MONTH, 15);
-  private static final LocalDate HOLIDAY_2019 = LocalDate.of(2019, MONTH, 16);;
-  private static final LocalDate HOLIDAY_2021 = LocalDate.of(2021, MONTH, 20);
-
   private static final DayOfWeekInMonthHoliday HOLIDAY =
       new DayOfWeekInMonthHoliday(WEEK_NUMBER, DAY_OF_WEEK, MONTH);
 

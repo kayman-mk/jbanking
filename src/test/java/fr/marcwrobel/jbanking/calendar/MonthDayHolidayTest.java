@@ -2,11 +2,13 @@ package fr.marcwrobel.jbanking.calendar;
 
 import static java.time.Month.DECEMBER;
 import static java.time.Month.JANUARY;
+import static java.time.Month.JUNE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.MonthDay;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,7 +17,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class MonthDayHolidayTest {
 
   private static final int YEAR = 2020;
-  private static final int MONTH = 6;
+  private static final Month MONTH = JUNE;
   private static final int DAY = 15;
 
   private static final MonthDayHoliday HOLIDAY = new MonthDayHoliday(MonthDay.of(MONTH, DAY));
