@@ -13,7 +13,7 @@ class FollowingWeekShiftingStrategyTest {
   private static final LocalDate MONDAY = SUNDAY.plusDays(1);
   private static final LocalDate TUESDAY = MONDAY.plusDays(1);
 
-  private static final ShiftingStrategy STRATEGY = ShiftingStrategy.FOLLOWING_WEEK;
+  private static final ShiftingStrategy STRATEGY = ShiftingStrategy.PLUS_TWO_DAYS;
 
   @Test
   public void fridayShift() {

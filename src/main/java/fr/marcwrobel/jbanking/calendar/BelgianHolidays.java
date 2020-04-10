@@ -5,7 +5,7 @@ import static java.time.Month.JULY;
 import java.time.LocalDate;
 import java.time.MonthDay;
 
-/** National holidays for countries having no dedicated enum. */
+/** {@link Holiday}s specific to Belgium. */
 public enum BelgianHolidays implements Holiday {
 
   /**

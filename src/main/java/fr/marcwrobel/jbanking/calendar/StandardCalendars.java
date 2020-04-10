@@ -1,5 +1,7 @@
 package fr.marcwrobel.jbanking.calendar;
 
+import static fr.marcwrobel.jbanking.calendar.ShiftingStrategy.SUNDAY_TO_MONDAY;
+
 import java.time.LocalDate;
 import java.time.temporal.ValueRange;
 import java.util.List;
@@ -116,6 +118,31 @@ public enum StandardCalendars implements Calendar {
           WesternChristianHolidays.ALL_SAINTS_DAY,
           WesternChristianHolidays.CHRISTMAS,
           WesternChristianHolidays.SAINT_STEPHENS_DAY)),
+
+  /**
+   * Spanish national holidays calendar.
+   *
+   * <p>This calendar is not accurate because each municipality in Spain is allowed to have a
+   * maximum of 14 public holidays per year; a maximum of nine of these are chosen by the national
+   * government and at least two are chosen locally.
+   *
+   * @see <a href="https://en.wikipedia.org/wiki/Public_holidays_in_Spain">timeanddate.com</a>
+   */
+  SPANISH_NATIONAL_HOLIDAYS(
+      new ConfigurableCalendar(
+          DayOfWeekHoliday.SATURDAY,
+          DayOfWeekHoliday.SUNDAY,
+          WorldEventHolidays.NEW_YEAR_DAY,
+          WesternChristianHolidays.EPIPHANY,
+          WesternChristianHolidays.GOOD_FRIDAY,
+          new ShiftedHoliday(WorldEventHolidays.INTERNATIONAL_WORKERS_DAY, SUNDAY_TO_MONDAY),
+          new ShiftedHoliday(WesternChristianHolidays.ASSUMPTION_OF_MARY, SUNDAY_TO_MONDAY),
+          SpanishHolidays.HISPANIC_DAY,
+          WesternChristianHolidays.ALL_SAINTS_DAY,
+          SpanishHolidays.CONSTITUTION_DAY,
+          new ShiftedHoliday(
+              WesternChristianHolidays.FEAST_OF_THE_IMMACULATE_CONCEPTION, SUNDAY_TO_MONDAY),
+          WesternChristianHolidays.CHRISTMAS)),
 
   /**
    * The calendar for <a

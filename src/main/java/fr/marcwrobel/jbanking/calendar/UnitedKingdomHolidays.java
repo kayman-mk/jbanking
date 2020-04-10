@@ -1,6 +1,6 @@
 package fr.marcwrobel.jbanking.calendar;
 
-import static fr.marcwrobel.jbanking.calendar.ShiftingStrategy.FOLLOWING_WEEK;
+import static fr.marcwrobel.jbanking.calendar.ShiftingStrategy.PLUS_TWO_DAYS;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -14,7 +14,7 @@ public enum UnitedKingdomHolidays implements Holiday {
    *
    * @see <a href="https://www.timeanddate.com/holidays/uk/boxing-day">timeanddate.com</a>
    */
-  BOXING_DAY(new ShiftedHoliday(WesternChristianHolidays.BOXING_DAY, FOLLOWING_WEEK)),
+  BOXING_DAY(new ShiftedHoliday(WesternChristianHolidays.BOXING_DAY, PLUS_TWO_DAYS)),
 
   /**
    * Christmas (or Feast of the Nativity) is an annual festival commemorating the birth of Jesus
@@ -22,7 +22,7 @@ public enum UnitedKingdomHolidays implements Holiday {
    *
    * @see <a href="https://www.timeanddate.com/holidays/us/christmas-day">timeanddate.com</a>
    */
-  CHRISTMAS(new ShiftedHoliday(WesternChristianHolidays.CHRISTMAS, FOLLOWING_WEEK)),
+  CHRISTMAS(new ShiftedHoliday(WesternChristianHolidays.CHRISTMAS, PLUS_TWO_DAYS)),
 
   /**
    * The first Monday of May is a bank holiday in the United Kingdom. It is called May Day in
@@ -43,7 +43,7 @@ public enum UnitedKingdomHolidays implements Holiday {
    *
    * @see <a href="https://www.timeanddate.com/holidays/uk/new-year-day">timeanddate.com</a>
    */
-  NEW_YEAR_DAY(new ShiftedHoliday(WorldEventHolidays.NEW_YEAR_DAY, FOLLOWING_WEEK)),
+  NEW_YEAR_DAY(new ShiftedHoliday(WorldEventHolidays.NEW_YEAR_DAY, PLUS_TWO_DAYS)),
 
   /**
    * The spring bank holiday, also known as the late May bank holiday, is a time for people in the

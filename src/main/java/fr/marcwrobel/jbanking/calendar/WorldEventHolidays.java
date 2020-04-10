@@ -3,6 +3,7 @@ package fr.marcwrobel.jbanking.calendar;
 import static java.time.Month.JANUARY;
 import static java.time.Month.MAY;
 import static java.time.Month.NOVEMBER;
+import static java.time.Month.OCTOBER;
 
 import java.time.LocalDate;
 import java.time.MonthDay;
@@ -19,6 +20,15 @@ public enum WorldEventHolidays implements Holiday {
    * @see <a href="https://wikipedia.org/wiki/Armistice_Day">Wikipedia</a>
    */
   ARMISTICE_DAY(new MonthDayHoliday(MonthDay.of(NOVEMBER, 11))),
+
+  /**
+   * Columbus Day is a national holiday in many countries of the Americas and elsewhere which
+   * officially celebrates the anniversary of Christopher Columbus's arrival in the Americas on
+   * October 12, 1492.
+   *
+   * @see <a href="https://en.wikipedia.org/wiki/Columbus_Day">Wikipedia</a>
+   */
+  COLUMBUS_DAY(new MonthDayHoliday(MonthDay.of(OCTOBER, 12))),
 
   /**
    * The "Europe Day" of the EU was introduced in 1985 by the European Communities (the predecessor

@@ -51,7 +51,7 @@ public enum ShiftingStrategy {
    * <p>This strategy is useful for {@link UnitedKingdomHolidays United Kingdom holidays} (Christmas
    * and Boxing Day).
    */
-  FOLLOWING_WEEK {
+  PLUS_TWO_DAYS {
     @Override
     public LocalDate shift(LocalDate date) {
       LocalDate d = date;
@@ -71,6 +71,39 @@ public enum ShiftingStrategy {
       DayOfWeek dayOfWeek = date.getDayOfWeek();
       if (dayOfWeek == DayOfWeek.MONDAY || dayOfWeek == DayOfWeek.TUESDAY) {
         d = date.minusDays(2);
+      }
+
+      return d;
+    }
+  },
+
+  /**
+   * For {@link Holiday}s that are observed on the following {@link DayOfWeek#MONDAY} when they fall
+   * on {@link DayOfWeek#SUNDAY}.
+   *
+   * <p>This strategy is useful for {@link UnitedKingdomHolidays United Kingdom holidays} (Christmas
+   * and Boxing Day).
+   */
+  SUNDAY_TO_MONDAY {
+    @Override
+    public LocalDate shift(LocalDate date) {
+      LocalDate d = date;
+
+      DayOfWeek dayOfWeek = date.getDayOfWeek();
+      if (dayOfWeek == DayOfWeek.SUNDAY) {
+        d = date.plusDays(1);
+      }
+
+      return d;
+    }
+
+    @Override
+    public LocalDate unshift(LocalDate date) {
+      LocalDate d = date;
+
+      DayOfWeek dayOfWeek = date.getDayOfWeek();
+      if (dayOfWeek == DayOfWeek.MONDAY) {
+        d = date.minusDays(1);
       }
 
       return d;
