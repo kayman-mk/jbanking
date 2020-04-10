@@ -26,7 +26,7 @@ public enum WorldEventHolidays implements Holiday {
    * officially celebrates the anniversary of Christopher Columbus's arrival in the Americas on
    * October 12, 1492.
    *
-   * @see <a href="https://en.wikipedia.org/wiki/Columbus_Day">Wikipedia</a>
+   * @see <a href="https://wikipedia.org/wiki/Columbus_Day">Wikipedia</a>
    */
   COLUMBUS_DAY(new MonthDayHoliday(MonthDay.of(OCTOBER, 12))),
 
@@ -34,7 +34,7 @@ public enum WorldEventHolidays implements Holiday {
    * The "Europe Day" of the EU was introduced in 1985 by the European Communities (the predecessor
    * organisation of the EU) The date of commemorates the Schuman Declaration of 9 May 1950.
    *
-   * @see <a href="https://en.wikipedia.org/wiki/Europe_Day">Wikipedia</a>
+   * @see <a href="https://wikipedia.org/wiki/Europe_Day">Wikipedia</a>
    */
   EUROPE_DAY(new MonthDayHoliday(MonthDay.of(MAY, 9))),
 

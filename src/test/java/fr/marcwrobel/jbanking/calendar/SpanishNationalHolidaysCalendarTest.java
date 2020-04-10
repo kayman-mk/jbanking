@@ -70,7 +70,7 @@ class SpanishNationalHolidaysCalendarTest extends CalendarTestSupport {
   }
 
   // https://www.timeanddate.com/holidays/spain/2021?hol=1 +
-  // https://en.wikipedia.org/wiki/Public_holidays_in_Spain
+  // https://wikipedia.org/wiki/Public_holidays_in_Spain
   @Test
   public void year2021() {
     check(
@@ -89,7 +89,7 @@ class SpanishNationalHolidaysCalendarTest extends CalendarTestSupport {
   }
 
   // https://www.timeanddate.com/holidays/spain/2022?hol=1 +
-  //  // https://en.wikipedia.org/wiki/Public_holidays_in_Spain
+  //  // https://wikipedia.org/wiki/Public_holidays_in_Spain
   @Test
   public void year2022() {
     check(

@@ -3,6 +3,7 @@ package fr.marcwrobel.jbanking.calendar;
 import static java.time.Month.AUGUST;
 import static java.time.Month.DECEMBER;
 import static java.time.Month.JANUARY;
+import static java.time.Month.MARCH;
 import static java.time.Month.NOVEMBER;
 
 import java.time.LocalDate;
@@ -46,7 +47,7 @@ public enum WesternChristianHolidays implements Holiday {
    * that previously formed part of the British Empire. Boxing Day is on 26 December, although the
    * attached bank holiday or public holiday may take place either on that day or two days later.
    *
-   * @see <a href="https://en.wikipedia.org/wiki/Boxing_Day">Wikipedia</a>
+   * @see <a href="https://wikipedia.org/wiki/Boxing_Day">Wikipedia</a>
    * @see #SAINT_STEPHENS_DAY
    */
   BOXING_DAY(new MonthDayHoliday(MonthDay.of(DECEMBER, 26))),
@@ -86,7 +87,7 @@ public enum WesternChristianHolidays implements Holiday {
    * Christmas. Moreover, the feast of the Epiphany, in some denominations, also initiates the
    * liturgical season of Epiphanytide.
    *
-   * @see <a href="https://en.wikipedia.org/wiki/Epiphany_(holiday)">Wikipedia</a>
+   * @see <a href="https://wikipedia.org/wiki/Epiphany_(holiday)">Wikipedia</a>
    */
   EPIPHANY(new MonthDayHoliday(MonthDay.of(JANUARY, 6))),
 
@@ -97,7 +98,7 @@ public enum WesternChristianHolidays implements Holiday {
    * Immaculate Conception is one of the most important Marian feasts in the liturgical calendar of
    * the Roman Catholic Church, and is celebrated worldwide.
    *
-   * @see <a href="https://en.wikipedia.org/wiki/Feast_of_the_Immaculate_Conception">Wikipedia</a>
+   * @see <a href="https://wikipedia.org/wiki/Feast_of_the_Immaculate_Conception">Wikipedia</a>
    */
   FEAST_OF_THE_IMMACULATE_CONCEPTION(new MonthDayHoliday(MonthDay.of(DECEMBER, 8))),
 
@@ -129,6 +130,15 @@ public enum WesternChristianHolidays implements Holiday {
    * @see <a href="https://wikipedia.org/wiki/Whit_Monday">Wikipedia</a>
    */
   PENTECOST_MONDAY(new RelativeHoliday(WesternEaster.INSTANCE, 50)),
+
+  /**
+   * Saint Patrick's Day, or the Feast of Saint Patrick ('the Day of the Festival of Patrick'), is a
+   * cultural and religious celebration held on 17 March, the traditional death date of Saint
+   * Patrick, the foremost patron saint of Ireland.
+   *
+   * @see <a href="https://wikipedia.org/wiki/Saint_Patrick%27s_Day">Wikipedia</a>
+   */
+  SAINT_PATRICKS_DAY(new MonthDayHoliday(MonthDay.of(MARCH, 17))),
 
   /**
    * Saint Stephen's Day, also called the Feast of Saint Stephen, is a Christian saint's day to

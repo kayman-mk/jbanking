@@ -78,6 +78,25 @@ public enum StandardCalendars implements Calendar {
           WesternChristianHolidays.SAINT_STEPHENS_DAY)),
 
   /**
+   * Irish national holidays calendar.
+   *
+   * @see <a href="https://www.timeanddate.com/holidays/ireland/?hol=1">timeanddate.com</a>
+   */
+  IRISH_NATIONAL_HOLIDAYS(
+      new ConfigurableCalendar(
+          DayOfWeekHoliday.SATURDAY,
+          DayOfWeekHoliday.SUNDAY,
+          WorldEventHolidays.NEW_YEAR_DAY,
+          WesternChristianHolidays.SAINT_PATRICKS_DAY,
+          WesternChristianHolidays.EASTER_MONDAY,
+          IrishHolidays.MAY_DAY,
+          IrishHolidays.JUNE_HOLIDAY,
+          IrishHolidays.AUGUST_HOLIDAY,
+          IrishHolidays.OCTOBER_HOLIDAY,
+          WesternChristianHolidays.CHRISTMAS,
+          WesternChristianHolidays.SAINT_STEPHENS_DAY)),
+
+  /**
    * Italian national holidays calendar.
    *
    * @see <a href="https://www.timeanddate.com/holidays/italy/?hol=1">timeanddate.com</a>
@@ -126,7 +145,7 @@ public enum StandardCalendars implements Calendar {
    * maximum of 14 public holidays per year; a maximum of nine of these are chosen by the national
    * government and at least two are chosen locally.
    *
-   * @see <a href="https://en.wikipedia.org/wiki/Public_holidays_in_Spain">timeanddate.com</a>
+   * @see <a href="https://wikipedia.org/wiki/Public_holidays_in_Spain">timeanddate.com</a>
    */
   SPANISH_NATIONAL_HOLIDAYS(
       new ConfigurableCalendar(

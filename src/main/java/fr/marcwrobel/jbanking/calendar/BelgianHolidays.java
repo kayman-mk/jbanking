@@ -13,7 +13,7 @@ public enum BelgianHolidays implements Holiday {
    * German: Belgischer Nationalfeiertag) is the national holiday of Belgium commemorated annually
    * on 21 July.
    *
-   * @see <a href="https://en.wikipedia.org/wiki/Belgian_National_Day">Wikipedia</a>
+   * @see <a href="https://wikipedia.org/wiki/Belgian_National_Day">Wikipedia</a>
    */
   BELGIAN_NATIONAL_DAY(new MonthDayHoliday(MonthDay.of(JULY, 21)));
 

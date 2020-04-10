@@ -16,7 +16,7 @@ public enum ItalianHolidays implements Holiday {
    * Italian holiday commemorating the end of Nazi occupation of the Country during World War II and
    * the victory of the Resistance.
    *
-   * @see <a href="https://en.wikipedia.org/wiki/Liberation_Day_%28Italy%29">Wikipedia</a>
+   * @see <a href="https://wikipedia.org/wiki/Liberation_Day_%28Italy%29">Wikipedia</a>
    */
   LIBERATION_DAY(new MonthDayHoliday(MonthDay.of(APRIL, 25))),
 
