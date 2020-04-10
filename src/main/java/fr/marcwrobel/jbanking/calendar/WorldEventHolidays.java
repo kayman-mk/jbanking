@@ -1,5 +1,6 @@
 package fr.marcwrobel.jbanking.calendar;
 
+import static java.time.Month.APRIL;
 import static java.time.Month.JANUARY;
 import static java.time.Month.MAY;
 import static java.time.Month.NOVEMBER;
@@ -13,6 +14,17 @@ import java.time.MonthDay;
  * countries), such as feasts or wars.
  */
 public enum WorldEventHolidays implements Holiday {
+
+  /**
+   * Anzac Day is a national day of remembrance in Australia and New Zealand that broadly
+   * commemorates all Australians and New Zealanders "who served and died in all wars, conflicts,
+   * and peacekeeping operations" and "the contribution and suffering of all those who have served".
+   * Observed on 25 April each year, Anzac Day was originally devised to honour the members of the
+   * Australian and New Zealand Army Corps (ANZAC) who served in the Gallipoli Campaign, their first
+   * engagement in the First World War (1914–1918).
+   */
+  ANZAC_DAY(new MonthDayHoliday(MonthDay.of(APRIL, 25))),
+
   /**
    * Armistice Day is commemorated every year on 11 November to mark the armistice signed between
    * the Allies of World War I and Germany.

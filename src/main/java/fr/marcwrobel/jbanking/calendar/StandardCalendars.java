@@ -11,6 +11,23 @@ import java.util.Set;
 public enum StandardCalendars implements Calendar {
 
   /**
+   * Australian national holidays calendar.
+   *
+   * @see <a href="https://www.timeanddate.com/holidays/australia/?hol=1">timeanddate.com</a>
+   */
+  AUSTRALIAN_NATIONAL_HOLIDAYS(
+      new ConfigurableCalendar(
+          DayOfWeekHoliday.SATURDAY,
+          DayOfWeekHoliday.SUNDAY,
+          WorldEventHolidays.NEW_YEAR_DAY,
+          AustralianHolidays.AUSTRALIA_DAY,
+          WesternChristianHolidays.GOOD_FRIDAY,
+          WesternChristianHolidays.EASTER_MONDAY,
+          WorldEventHolidays.ANZAC_DAY,
+          WesternChristianHolidays.CHRISTMAS,
+          WesternChristianHolidays.BOXING_DAY)),
+
+  /**
    * Belgian national holidays calendar.
    *
    * @see <a href="https://www.timeanddate.com/holidays/belgium/?hol=1">timeanddate.com</a>
